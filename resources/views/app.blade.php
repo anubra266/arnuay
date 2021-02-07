@@ -9,17 +9,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--SEO assets -->
     <meta name="theme-color" content="{{$theme ?? ''}}" />
-    <meta name="title" content="Cipies - Cashless Payment System" />
+    <meta name="title" content="Arnuay - Cashless Payment System" />
     <meta name="description" content="Cashless Payment System" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="cipies.tech" />
-    <meta property="og:title" content="Cipies - Cashless Payment System" />
+    <meta property="og:url" content="arnuay.tech" />
+    <meta property="og:title" content="Arnuay - Cashless Payment System" />
     <meta property="og:description" content="Cashless Payment System" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="@anubra266" />
     <meta property="twitter:creator" content="@anubra266" />
-    <meta property="twitter:url" content="cipies.tech" />
-    <meta property="twitter:title" content="Cipies - Cashless Payment System" />
+    <meta property="twitter:url" content="Arnuay.tech" />
+    <meta property="twitter:title" content="Arnuay - Cashless Payment System" />
     <meta property="twitter:description" content="Cashless Payment System" />
     {{-- <meta property="og:image" content="%PUBLIC_URL%/logo.png" /> --}}
     {{-- <meta property="twitter:image" content="%PUBLIC_URL%/logo.png" /> --}}
@@ -27,7 +27,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" /> --}}
 
-    <!--include assets required for Cipies here -->
+    <!--include assets required for arnuay here -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
