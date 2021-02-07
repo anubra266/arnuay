@@ -36,6 +36,8 @@
 </head>
 
 
+@routes
+
 <body>
     @inertia
 </body>
