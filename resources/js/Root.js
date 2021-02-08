@@ -6,6 +6,8 @@ import { useProgressBar } from "./components/app/progress-bar";
 import theme from "~/theme";
 import ErrorBoundary from "react-errbo";
 
+import "../css/app.css";
+
 useProgressBar();
 
 const el = document.getElementById("app");
