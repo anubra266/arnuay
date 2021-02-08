@@ -3,7 +3,8 @@
         "allowSyntheticDefaultImports": false,
         "baseUrl": "./",
         "paths": {
-            "~/*": ["./*"]
+            "~/*": ["./resources/js/*"],
+            "@/*": ["./resources/js/components/*"]
         }
     },
     "exclude": ["node_modules"]

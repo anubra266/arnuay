@@ -9,6 +9,7 @@ mix.js("resources/js/app.js", "public/js")
         resolve: {
             alias: {
                 "~": path.resolve("resources/js"),
+                "@": path.resolve("resources/js/components"),
             },
         },
     })

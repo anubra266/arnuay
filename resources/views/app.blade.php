@@ -41,7 +41,6 @@
 <body>
     @inertia
 
-    <script src="{{ mix('js/bundle.js') }}"></script>
 </body>
 
 </html>
