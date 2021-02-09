@@ -1,6 +1,5 @@
 <div align="center">
-    <img src="./banner.png" height="300">
-    <br /><br /><br /><br />
+    <img src="./public/logo.png" height="300">
 </div>
 
 ## Contents
