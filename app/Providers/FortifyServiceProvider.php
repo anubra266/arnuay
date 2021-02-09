@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Actions\Auth\CustomLogin;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
@@ -31,6 +32,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        CustomLogin::handle();
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
