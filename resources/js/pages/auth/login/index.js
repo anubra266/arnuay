@@ -5,7 +5,6 @@ import {
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText,
     Input,
     useColorModeValue,
     Stack,
@@ -17,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../layout";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import CInertiaLink from "@/app/chakra-inertia-link";
+import { BottomLink } from "@/guest/auth";
 
 //TODO Ask if I can add custom attributes to components. e.g inset-y
 const Login = () => {
@@ -82,10 +81,10 @@ const Login = () => {
                 </Button>
             </Stack>
             <Stack mt={5} direction="row" justifyContent="space-between">
-                <CInertiaLink href={route("password.request")}>
+                <BottomLink href={route("password.request")}>
                     Forgot Password?
-                </CInertiaLink>
-                <CInertiaLink href={route("register")}>Register?</CInertiaLink>
+                </BottomLink>
+                <BottomLink href={route("register")}>Register?</BottomLink>
             </Stack>
         </Box>
     );

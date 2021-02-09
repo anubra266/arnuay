@@ -1,18 +1,18 @@
 import React from "react";
-import { Box, useColorModeValue, Center } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
 
 const Layout = (props) => {
     return (
-        <Box pos="fixed" w="full" h="full" bg={useColorModeValue("gray.50")}>
+        <Box pos="relative" w="full" h="full">
             <Box
                 pos="absolute"
-                top="50%"
                 left="50%"
+                transform="translateX(-50%)"
                 w="md"
                 maxW="90%"
-                transform="translate(-50%,-50%)"
+                py={10}
             >
                 <CInertiaLink
                     as={Center}
@@ -22,7 +22,7 @@ const Layout = (props) => {
                     fontSize="3xl"
                     color="brand.400"
                 >
-                    <Logo h={100} />
+                    <Logo h={100} alt="Arnuay Logo - Back to Home" />
                 </CInertiaLink>
                 {props.children}
             </Box>
