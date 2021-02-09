@@ -17,6 +17,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useViewportScroll } from "framer-motion";
 import ThemeSwitch from "../theme-toggle";
 import CInertiaLink from "@/app/chakra-inertia-link";
+import Logo from "@/app/logo";
 
 export default function Gslr() {
     const bg = useColorModeValue("white", "gray.800");
@@ -52,18 +53,15 @@ export default function Gslr() {
                     mx="auto"
                 >
                     <Flex>
-                        <chakra.a
+                        <CInertiaLink
                             href="/"
-                            title="Choc Home Page"
+                            title="Arnuay Home Page"
                             display="flex"
                             alignItems="center"
                         >
-                            {/*Logo*/}
-                            <VisuallyHidden>Choc</VisuallyHidden>
-                        </chakra.a>
-                        <chakra.h1 fontSize="2xl" fontWeight="bold">
-                            Arnuay
-                        </chakra.h1>
+                            <Logo h={50} />
+                            <VisuallyHidden>Arnuay</VisuallyHidden>
+                        </CInertiaLink>
                     </Flex>
                     <HStack display="flex" alignItems="center" spacing={1}>
                         <HStack
