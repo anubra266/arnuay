@@ -3,7 +3,7 @@ import { chakra, Box, useColorModeValue, Icon, Image } from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
 
 const InfoHero = (props) => {
-    const bg = useColorModeValue("gray.50", "gray.800");
+    const bg = useColorModeValue("gray.50", "gray.900");
     return (
         <Box pos="relative" overflow="hidden" bg={bg} mt={10}>
             <Box maxW="7xl" mx="auto">
