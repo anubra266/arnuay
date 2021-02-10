@@ -16,8 +16,7 @@ import Layout from "../layout";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BottomLink } from "@/guest/auth";
 import Formy from "@/guest/auth/formy";
-import { signin } from "~/actions/login";
-//TODO Vscode JSX not understanding optional chaining
+import { signin } from "~/actions/auth/login";
 const Login = () => {
     const [show, setShow] = useState(false);
     const [errors, setErrors] = useState();

@@ -32,6 +32,11 @@ class FortifyUIServiceProvider extends ServiceProvider
             return inertia('auth/register');
         });
 
+        Fortify::verifyEmailView(function () {
+            // return view('auth.verify-email');
+            return inertia('auth/verify-email');
+        });
+
         Fortify::requestPasswordResetLinkView(function () {
             return inertia('auth/forgot-password');
         });
@@ -39,10 +44,6 @@ class FortifyUIServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function ($request) {
             return view('auth.reset-password', ['request' => $request]);
         });
-
-        // Fortify::verifyEmailView(function () {
-        //     return view('auth.verify-email');
-        // });
 
         // Fortify::confirmPasswordView(function () {
         //     return view('auth.confirm-password');

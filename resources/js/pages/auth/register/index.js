@@ -14,7 +14,7 @@ import Layout from "../layout";
 import { CFormLabel, PasswordVisibility, BottomLink } from "@/guest/auth";
 import Formy from "@/guest/auth/formy";
 import PasswordStrength from "@/guest/auth/password-strength";
-import { signup } from "~/actions/register";
+import { signup } from "~/actions/auth/register";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -119,11 +119,13 @@ const Register = () => {
                         <FormControl
                             id="password_confirmation"
                             isRequired
-                            isInvalid={errors?.password_confirmation}
+                            isInvalid={
+                                password_confirmation.value !== password.value
+                            }
                         >
                             <CFormLabel>Confirm Password</CFormLabel>
                             <FormErrorMessage>
-                                {errors?.password_confirmation}
+                                passwords don't match
                             </FormErrorMessage>
                             <InputGroup size="md">
                                 <Input
