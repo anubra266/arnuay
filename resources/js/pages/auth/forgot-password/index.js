@@ -5,7 +5,6 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
-    useColorModeValue,
     Stack,
     Button,
 } from "@chakra-ui/react";
@@ -18,7 +17,7 @@ const Register = () => {
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Reset Password
             </Text>
-            <Stack as="form" action="#" spacing={4}>
+            <Stack spacing={4}>
                 <FormControl id="email" isRequired isInvalid={false}>
                     <CFormLabel>Email</CFormLabel>
                     <FormErrorMessage>Incorrect email</FormErrorMessage>

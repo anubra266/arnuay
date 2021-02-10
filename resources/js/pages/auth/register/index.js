@@ -5,79 +5,158 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
-    useColorModeValue,
     Stack,
     Button,
     InputGroup,
+    Box,
 } from "@chakra-ui/react";
 import Layout from "../layout";
 import { CFormLabel, PasswordVisibility, BottomLink } from "@/guest/auth";
+import Formy from "@/guest/auth/formy";
+import PasswordStrength from "@/guest/auth/password-strength";
+import { signup } from "~/actions/register";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+    const [errors, setErrors] = useState();
+    const [loading, setLoading] = useState(false);
+
+    const handleRegister = (values) => {
+        signup(values, setLoading)
+            .then((m) => console.log("m", m))
+            .catch((errs) => {
+                setErrors(errs);
+            });
+    };
     return (
         <Fragment>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Create an account
             </Text>
-            <Stack as="form" action="#" spacing={4}>
-                <FormControl id="email" isRequired isInvalid={false}>
-                    <CFormLabel>Email</CFormLabel>
-                    <FormErrorMessage>Incorrect email</FormErrorMessage>
-                    <Input
-                        type="email"
-                        placeholder="Enter your email"
-                        focusBorderColor="brand.400"
-                    />
-                    <FormHelperText>Enter your email address</FormHelperText>
-                </FormControl>
-                <FormControl id="password" isRequired isInvalid={false}>
-                    <CFormLabel>Password</CFormLabel>
-                    <FormErrorMessage>Incorrect password</FormErrorMessage>
-                    <InputGroup size="md">
-                        <Input
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Enter your password"
-                            focusBorderColor="brand.400"
-                        />
-                        <PasswordVisibility
-                            show={showPassword}
-                            setShow={setShowPassword}
-                        />
-                    </InputGroup>
-                    <FormHelperText>Enter a secure password</FormHelperText>
-                </FormControl>
-                <FormControl
-                    id="password_confirmation"
-                    isRequired
-                    isInvalid={false}
-                >
-                    <CFormLabel>Confirm Password</CFormLabel>
-                    <FormErrorMessage>Incorrect password</FormErrorMessage>
-                    <InputGroup size="md">
-                        <Input
-                            type={showPasswordConfirm ? "text" : "password"}
-                            placeholder="Enter your password"
-                            focusBorderColor="brand.400"
-                        />
-                        <PasswordVisibility
-                            show={showPasswordConfirm}
-                            setShow={setShowPasswordConfirm}
-                        />
-                    </InputGroup>
-                    <FormHelperText>Confirm your password</FormHelperText>
-                </FormControl>
+            <Formy
+                initialValues={{
+                    username: "",
+                    email: "",
+                    password: "",
+                    password_confirmation: "",
+                }}
+                onSubmit={handleRegister}
+            >
+                {({ username, email, password, password_confirmation }) => (
+                    <Stack spacing={4}>
+                        <FormControl
+                            id="username"
+                            isRequired
+                            isInvalid={errors?.username}
+                        >
+                            <CFormLabel>Username</CFormLabel>
+                            <FormErrorMessage>
+                                {errors?.username}
+                            </FormErrorMessage>
+                            <Input
+                                type="text"
+                                placeholder="Enter your username"
+                                focusBorderColor="brand.400"
+                                autoFocus
+                                {...username}
+                            />
+                            <FormHelperText>
+                                Choose your username
+                            </FormHelperText>
+                        </FormControl>
+                        <FormControl
+                            id="email"
+                            isRequired
+                            isInvalid={errors?.email}
+                        >
+                            <CFormLabel>Email</CFormLabel>
+                            <FormErrorMessage>{errors?.email}</FormErrorMessage>
+                            <Input
+                                type=""
+                                placeholder="Enter your email"
+                                focusBorderColor="brand.400"
+                                autoFocus
+                                {...email}
+                            />
+                            <FormHelperText>
+                                Enter your email address
+                            </FormHelperText>
+                        </FormControl>
+                        <FormControl
+                            id="password"
+                            isRequired
+                            isInvalid={errors?.password}
+                        >
+                            <CFormLabel>Password</CFormLabel>
+                            <FormErrorMessage>
+                                {errors?.password}
+                            </FormErrorMessage>
+                            <Box
+                                display={
+                                    password.value.length > 0 ? "block" : "none"
+                                }
+                                mb={3}
+                            >
+                                <PasswordStrength password={password.value} />
+                            </Box>
+                            <InputGroup size="md">
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="Enter your password"
+                                    focusBorderColor="brand.400"
+                                    {...password}
+                                />
+                                <PasswordVisibility
+                                    show={showPassword}
+                                    setShow={setShowPassword}
+                                />
+                            </InputGroup>
+                            <FormHelperText>
+                                Enter a secure password
+                            </FormHelperText>
+                        </FormControl>
+                        <FormControl
+                            id="password_confirmation"
+                            isRequired
+                            isInvalid={errors?.password_confirmation}
+                        >
+                            <CFormLabel>Confirm Password</CFormLabel>
+                            <FormErrorMessage>
+                                {errors?.password_confirmation}
+                            </FormErrorMessage>
+                            <InputGroup size="md">
+                                <Input
+                                    type={
+                                        showPasswordConfirm
+                                            ? "text"
+                                            : "password"
+                                    }
+                                    placeholder="Enter your password"
+                                    focusBorderColor="brand.400"
+                                    {...password_confirmation}
+                                />
+                                <PasswordVisibility
+                                    show={showPasswordConfirm}
+                                    setShow={setShowPasswordConfirm}
+                                />
+                            </InputGroup>
+                            <FormHelperText>
+                                Confirm your password
+                            </FormHelperText>
+                        </FormControl>
 
-                <Button
-                    type="submit"
-                    colorScheme="brand"
-                    isLoading={false}
-                    shadow="lg"
-                >
-                    Register
-                </Button>
-            </Stack>
+                        <Button
+                            type="submit"
+                            colorScheme="brand"
+                            isLoading={loading}
+                            shadow="lg"
+                        >
+                            Register
+                        </Button>
+                    </Stack>
+                )}
+            </Formy>
             <Stack mt={5} direction="row" justifyContent="space-between">
                 <BottomLink href={route("login")}>Have an account?</BottomLink>
                 <BottomLink href={route("password.request")}>

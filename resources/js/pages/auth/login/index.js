@@ -17,15 +17,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BottomLink } from "@/guest/auth";
 import Formy from "@/guest/auth/formy";
 import { signin } from "~/actions/login";
-//TODO Ask if I can add custom attributes to components. e.g inset-y
 //TODO Vscode JSX not understanding optional chaining
 const Login = () => {
     const [show, setShow] = useState(false);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState();
     const [loading, setLoading] = useState(false);
 
     const handleLogin = (values, setValue) => {
-        console.log("values", values);
         signin(values, setLoading)
             .then((m) => console.log("m", m))
             .catch((errs) => {
@@ -50,11 +48,11 @@ const Login = () => {
                     <Stack>
                         <FormControl id="email" isRequired>
                             <FormLabel fontSize="sm" fontWeight="bold">
-                                Email
+                                Username or email
                             </FormLabel>
                             <Input
-                                type="email"
-                                placeholder="Enter your email"
+                                type="text"
+                                placeholder="Enter your username or email"
                                 focusBorderColor="brand.400"
                                 autoFocus
                                 {...email}
@@ -97,7 +95,7 @@ const Login = () => {
                             </Checkbox>
                         </FormControl>
                         <Text fontSize="sm" color="red.600" mx={3}>
-                            {errors.email}
+                            {errors?.email}
                         </Text>
                         <Button
                             type="submit"
