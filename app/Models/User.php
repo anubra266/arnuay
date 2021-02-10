@@ -7,10 +7,34 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Auth\Notifications\ResetPassword;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
+    /**
+    * Send the email verification notification.
+    *
+    * @return void
+    */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\Auth\VerifyEmail());
+    }
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \App\Notifications\Auth\ResetPassword($token));
+    }
     /**
      * The attributes that are mass assignable.
      *
