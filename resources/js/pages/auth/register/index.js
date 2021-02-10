@@ -3,7 +3,6 @@ import {
     Box,
     Text,
     FormControl,
-    FormLabel,
     FormErrorMessage,
     FormHelperText,
     Input,
@@ -11,13 +10,9 @@ import {
     Stack,
     Button,
     InputGroup,
-    InputRightElement,
-    IconButton,
 } from "@chakra-ui/react";
 import Layout from "../layout";
 import { CFormLabel, PasswordVisibility, BottomLink } from "@/guest/auth";
-
-//TODO Ask if I can add custom attributes to components. e.g inset-y
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -91,6 +86,9 @@ const Register = () => {
             </Stack>
             <Stack mt={5} direction="row" justifyContent="space-between">
                 <BottomLink href={route("login")}>Have an account?</BottomLink>
+                <BottomLink href={route("password.request")}>
+                    Forgot Password?
+                </BottomLink>
             </Stack>
         </Box>
     );

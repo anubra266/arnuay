@@ -20,7 +20,7 @@ import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
 
 export default function Gslr() {
-    const bg = useColorModeValue("white", "gray.800");
+    const bg = useColorModeValue("gray.50", "gray.800");
     const mobileNav = useDisclosure();
     const ref = React.useRef();
     const [y, setY] = React.useState(0);
