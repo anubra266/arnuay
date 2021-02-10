@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import {
-    Box,
     Text,
     FormControl,
     FormErrorMessage,
@@ -18,12 +17,7 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
     return (
-        <Box
-            rounded="md"
-            shadow="xl"
-            p={{ base: 5, md: 10 }}
-            bg={useColorModeValue("white", "gray.800")}
-        >
+        <Fragment>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Create an account
             </Text>
@@ -90,7 +84,7 @@ const Register = () => {
                     Forgot Password?
                 </BottomLink>
             </Stack>
-        </Box>
+        </Fragment>
     );
 };
 Register.layout = (page) => <Layout children={page} />;

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import {
-    Box,
     Text,
     FormControl,
     FormErrorMessage,
@@ -15,12 +14,7 @@ import { CFormLabel, BottomLink } from "@/guest/auth";
 
 const Register = () => {
     return (
-        <Box
-            rounded="md"
-            shadow="xl"
-            p={{ base: 5, md: 10 }}
-            bg={useColorModeValue("white", "gray.800")}
-        >
+        <Fragment>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Reset Password
             </Text>
@@ -48,7 +42,7 @@ const Register = () => {
                 <BottomLink href={route("login")}>Sign In?</BottomLink>
                 <BottomLink href={route("register")}>Sign Up?</BottomLink>
             </Stack>
-        </Box>
+        </Fragment>
     );
 };
 Register.layout = (page) => <Layout children={page} />;

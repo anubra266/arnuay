@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import {
-    Box,
     Text,
     FormControl,
     FormLabel,
     FormErrorMessage,
     Input,
-    useColorModeValue,
     Stack,
     Button,
     Checkbox,
@@ -22,12 +20,7 @@ import { BottomLink } from "@/guest/auth";
 const Login = () => {
     const [show, setShow] = useState(false);
     return (
-        <Box
-            rounded="md"
-            shadow="xl"
-            p={{ base: 5, md: 10 }}
-            bg={useColorModeValue("white", "gray.800")}
-        >
+        <Fragment>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Sign in to your account
             </Text>
@@ -67,7 +60,7 @@ const Login = () => {
                     </InputGroup>
                 </FormControl>
                 <FormControl>
-                    <Checkbox defaultIsChecked colorScheme="brand">
+                    <Checkbox defaultChecked colorScheme="brand">
                         Remember me
                     </Checkbox>
                 </FormControl>
@@ -86,7 +79,7 @@ const Login = () => {
                 </BottomLink>
                 <BottomLink href={route("register")}>Register?</BottomLink>
             </Stack>
-        </Box>
+        </Fragment>
     );
 };
 Login.layout = (page) => <Layout children={page} />;
