@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import Navbar from "~/components/guest/landing/navbar";
-import InfoHero from "~/components/guest/landing/info-hero";
+import Navbar from "./navbar";
+import InfoHero from "./info-hero";
 
 const Landing = () => {
     return (
