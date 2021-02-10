@@ -26,7 +26,7 @@ const Formy = (props) => {
     };
     const submitForm = (e) => {
         e.preventDefault();
-        props.onSubmit(values);
+        props.onSubmit(values, setValue);
     };
     return (
         <form onSubmit={submitForm}>

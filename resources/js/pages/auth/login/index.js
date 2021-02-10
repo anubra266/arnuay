@@ -15,64 +15,101 @@ import {
 import Layout from "../layout";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BottomLink } from "@/guest/auth";
-
+import Formy from "@/guest/auth/formy";
+import { signin } from "~/actions/login";
 //TODO Ask if I can add custom attributes to components. e.g inset-y
+//TODO Vscode JSX not understanding optional chaining
 const Login = () => {
     const [show, setShow] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    const handleLogin = (values, setValue) => {
+        console.log("values", values);
+        signin(values, setLoading)
+            .then((m) => console.log("m", m))
+            .catch((errs) => {
+                setErrors(errs);
+                setValue("password", "");
+            });
+    };
     return (
         <Fragment>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Sign in to your account
             </Text>
-            <Stack as="form" action="#">
-                <FormControl id="email" isRequired isInvalid={false}>
-                    <FormLabel fontSize="sm" fontWeight="bold">
-                        Email
-                    </FormLabel>
-                    <FormErrorMessage>Incorrect email</FormErrorMessage>
-                    <Input
-                        type="email"
-                        placeholder="Enter your email"
-                        focusBorderColor="brand.400"
-                    />
-                </FormControl>
-                <FormControl id="password" isRequired isInvalid={false}>
-                    <FormLabel fontSize="sm" fontWeight="bold">
-                        Password
-                    </FormLabel>
-                    <FormErrorMessage>Incorrect password</FormErrorMessage>
-                    <InputGroup size="md">
-                        <Input
-                            type={show ? "text" : "password"}
-                            placeholder="Enter your password"
-                            focusBorderColor="brand.400"
-                        />
-                        <InputRightElement width="4.5rem">
-                            <IconButton
-                                variant="ghost"
-                                size="sm"
-                                colorScheme="brand"
-                                h="1.75rem"
-                                onClick={() => setShow((a) => !a)}
-                                icon={show ? <FaEyeSlash /> : <FaEye />}
+            <Formy
+                initialValues={{
+                    email: "",
+                    password: "",
+                    remember: true,
+                }}
+                onSubmit={handleLogin}
+            >
+                {({ email, password, remember }, { setValue }) => (
+                    <Stack>
+                        <FormControl id="email" isRequired>
+                            <FormLabel fontSize="sm" fontWeight="bold">
+                                Email
+                            </FormLabel>
+                            <Input
+                                type="email"
+                                placeholder="Enter your email"
+                                focusBorderColor="brand.400"
+                                autoFocus
+                                {...email}
                             />
-                        </InputRightElement>
-                    </InputGroup>
-                </FormControl>
-                <FormControl>
-                    <Checkbox defaultChecked colorScheme="brand">
-                        Remember me
-                    </Checkbox>
-                </FormControl>
-                <Button
-                    type="submit"
-                    colorScheme="brand"
-                    isLoading={false}
-                    shadow="lg"
-                >
-                    Login
-                </Button>
-            </Stack>
+                        </FormControl>
+                        <FormControl id="password" isRequired>
+                            <FormLabel fontSize="sm" fontWeight="bold">
+                                Password
+                            </FormLabel>
+                            <InputGroup size="md">
+                                <Input
+                                    type={show ? "text" : "password"}
+                                    placeholder="Enter your password"
+                                    focusBorderColor="brand.400"
+                                    autoComplete="current-password"
+                                    {...password}
+                                />
+                                <InputRightElement width="4.5rem">
+                                    <IconButton
+                                        variant="ghost"
+                                        size="sm"
+                                        colorScheme="brand"
+                                        h="1.75rem"
+                                        onClick={() => setShow((a) => !a)}
+                                        icon={show ? <FaEyeSlash /> : <FaEye />}
+                                    />
+                                </InputRightElement>
+                            </InputGroup>
+                        </FormControl>
+                        <FormControl>
+                            <Checkbox
+                                defaultChecked
+                                colorScheme="brand"
+                                isChecked={remember.value}
+                                onChange={(e) =>
+                                    setValue("remember", e.target.checked)
+                                }
+                            >
+                                Remember me
+                            </Checkbox>
+                        </FormControl>
+                        <Text fontSize="sm" color="red.600" mx={3}>
+                            {errors.email}
+                        </Text>
+                        <Button
+                            type="submit"
+                            colorScheme="brand"
+                            isLoading={loading}
+                            shadow="lg"
+                        >
+                            Login
+                        </Button>
+                    </Stack>
+                )}
+            </Formy>
             <Stack mt={5} direction="row" justifyContent="space-between">
                 <BottomLink href={route("password.request")}>
                     Forgot Password?
