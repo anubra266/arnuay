@@ -2,13 +2,10 @@ import { Image, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 const Logo = (props) => {
-    return (
-        <Image
-            src={`/logo${useColorModeValue("", "-light")}.png`}
-            loading="lazy"
-            {...props}
-        />
-    );
+    const src = `/logo${
+        props.rev ? "-white" : useColorModeValue("", "-light")
+    }.png`;
+    return <Image src={src} loading="lazy" {...props} />;
 };
 
 export default Logo;
