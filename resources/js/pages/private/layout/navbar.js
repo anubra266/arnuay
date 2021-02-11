@@ -116,15 +116,23 @@ export default function Navbar() {
                             spacing={4}
                             display="flex"
                             alignItems="center"
-                            fontWeight="bold"
-                            fontSize="lg"
                             color="gray.50"
                         >
-                            <CInertiaLink href="/">
+                            <CInertiaLink
+                                href="/"
+                                letterSpacing="widest"
+                                fontSize="3xl"
+                            >
                                 Arnuay
                                 <VisuallyHidden>Arnuay</VisuallyHidden>
                             </CInertiaLink>
-                            <CInertiaLink href={route("accounts")}>
+                            <CInertiaLink
+                                href={route("accounts")}
+                                fontSize="lg"
+                                opacity={0.7}
+                                _hover={{ opacity: 1, color: "white" }}
+                                transition="opacity 0.1s ease-in-out"
+                            >
                                 NGN 19,000
                             </CInertiaLink>
                         </HStack>

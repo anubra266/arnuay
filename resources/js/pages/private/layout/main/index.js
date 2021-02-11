@@ -7,8 +7,8 @@ import {
     Flex,
     Image,
 } from "@chakra-ui/react";
-import Navbar from "./navbar";
-import LayoutProvider from "./context";
+import Navbar from "../navbar";
+import LayoutProvider from "../context";
 
 const Layout = ({ children }, header) => {
     const bg = useColorModeValue("brand.600", "gray.900");
