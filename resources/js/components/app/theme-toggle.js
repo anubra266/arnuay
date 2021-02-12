@@ -3,13 +3,13 @@ import {
     IconButton,
     Tooltip,
     useColorMode,
-    useColorModeValue,
+    useColorModeValue as mode,
 } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const ThemeToggle = (props) => {
-    const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-    const text = useColorModeValue("dark", "light");
+    const SwitchIcon = mode(FaMoon, FaSun);
+    const text = mode("dark", "light");
     const { toggleColorMode: toggleMode } = useColorMode();
     return (
         <Tooltip
