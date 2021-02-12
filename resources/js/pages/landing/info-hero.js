@@ -1,9 +1,9 @@
 import React from "react";
-import { chakra, Box, useColorModeValue, Icon, Image } from "@chakra-ui/react";
+import { chakra, Box, useColorModeValue as mode, Icon, Image } from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
 
 const InfoHero = (props) => {
-    const bg = useColorModeValue("gray.50", "gray.900");
+    const bg = mode("gray.50", "gray.900");
     return (
         <Box pos="relative" overflow="hidden" bg={bg} mt={10}>
             <Box maxW="7xl" mx="auto">
@@ -50,7 +50,7 @@ const InfoHero = (props) => {
                                 letterSpacing="tight"
                                 lineHeight="short"
                                 fontWeight="extrabold"
-                                color={useColorModeValue("gray.900", "white")}
+                                color={mode("gray.900", "white")}
                             >
                                 <chakra.span
                                     display={{ base: "block", xl: "inline" }}
@@ -59,7 +59,7 @@ const InfoHero = (props) => {
                                 </chakra.span>
                                 <chakra.span
                                     display={{ base: "block", xl: "inline" }}
-                                    color={useColorModeValue(
+                                    color={mode(
                                         "brand.600",
                                         "brand.400"
                                     )}

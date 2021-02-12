@@ -4,7 +4,7 @@ import {
     chakra,
     Box,
     Flex,
-    useColorModeValue,
+    useColorModeValue as mode,
     VisuallyHidden,
     HStack,
     Button,
@@ -20,7 +20,7 @@ import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
 
 export default function Gslr() {
-    const bg = useColorModeValue("gray.50", "gray.900");
+    const bg = mode("gray.50", "gray.900");
     const mobileNav = useDisclosure();
     const ref = React.useRef();
     const [y, setY] = React.useState(0);
@@ -95,7 +95,7 @@ export default function Gslr() {
                                 display={{ base: "flex", md: "none" }}
                                 aria-label="Open menu"
                                 fontSize="20px"
-                                color={useColorModeValue("gray.800", "inherit")}
+                                color={mode("gray.800", "inherit")}
                                 variant="ghost"
                                 icon={<AiOutlineMenu />}
                                 onClick={mobileNav.onOpen}

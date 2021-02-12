@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, useColorModeValue as mode } from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
 
@@ -28,7 +28,7 @@ const Layout = (props) => {
                     rounded="md"
                     shadow="xl"
                     p={{ base: 5, md: 10 }}
-                    bg={useColorModeValue("white", "gray.800")}
+                    bg={mode("white", "gray.800")}
                 >
                     {props.children}
                 </Box>
