@@ -1,6 +1,6 @@
 import React, { Fragment, createRef } from "react";
 import Layout from "../layout/main";
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
 const header = createRef();
 
@@ -11,7 +11,7 @@ const Home = () => {
             <Box
                 w={500}
                 p={5}
-                bg={useColorModeValue("white", "gray.700")}
+                bg={mode("white", "gray.700")}
                 shadow="md"
                 rounded="md"
                 zIndex={1}
