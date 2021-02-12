@@ -33,6 +33,7 @@
         "@inertiajs/progress": "^0.2.4",
         "framer-motion": "^3.3.0",
         "react-errbo": "^1.0.0",
+        "react-helmet": "^6.1.0",
         "react-icons": "^4.2.0",
         "react-password-strength-bar": "^0.3.2"
     }
