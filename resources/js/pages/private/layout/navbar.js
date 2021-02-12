@@ -20,6 +20,7 @@ import Logo from "@/app/logo";
 import { routes } from "./routes";
 
 import { LayoutContext } from "./context";
+import { FaPowerOff } from "react-icons/fa";
 
 const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
@@ -112,6 +113,7 @@ export default function Navbar() {
                                 pb={4}
                                 m={2}
                                 bg={bg}
+                                zIndex="tooltip"
                                 spacing={3}
                                 rounded="sm"
                                 shadow="sm"
@@ -121,7 +123,14 @@ export default function Navbar() {
                                     justifySelf="self-start"
                                     onClick={mobileNav.onClose}
                                 />
-                                <Routes size="md" />
+                                <Routes size="md" onClick={mobileNav.onClose} />
+                                <NavLink
+                                    href={route("logout")}
+                                    method="post"
+                                    leftIcon={<FaPowerOff />}
+                                >
+                                    Logout
+                                </NavLink>
                             </VStack>
                         </Box>
                         <HStack
@@ -194,6 +203,17 @@ export default function Navbar() {
                                 color="gray.50"
                                 fontSize="sm"
                             />
+
+                            <NavLink
+                                as={IconButton}
+                                href={route("logout")}
+                                method="post"
+                                color="gray.50"
+                                fontSize="sm"
+                                icon={<FaPowerOff />}
+                            >
+                                Logout
+                            </NavLink>
                         </HStack>
                     </HStack>
                 </Flex>
