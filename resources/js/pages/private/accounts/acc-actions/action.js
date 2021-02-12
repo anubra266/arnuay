@@ -51,7 +51,7 @@ const Action = (props) => {
                 fontFamily="heading"
                 fontWeight="bold"
                 cursor="pointer"
-                _hover={{ bg: mode("gray.200", "gray.600") }}
+                _hover={{ bg: mode("gray.200", "gray.800") }}
                 onClick={action.onOpen}
             >
                 <Icon as={props.icon} color={col} boxSize={6} />

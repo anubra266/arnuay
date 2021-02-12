@@ -1,11 +1,19 @@
 <?php
 
-$router->group(['middleware' => ['auth', 'verified']], function () use ($router) {
-    $router->get('/home', fn () =>inertia('private/home'))->name('home');
+use Illuminate\Support\Facades\Route;
 
-    $router->get('/accounts', fn () =>inertia('private/accounts'))->name('accounts');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', fn () =>inertia('private/home'))->name('home');
 
-    $router->get('/profile', fn () =>inertia('private/home'))->name('profile');
+    Route::get('/accounts', fn () =>inertia('private/accounts'))->name('accounts');
 
-    $router->get('/settings', fn () =>view('dashboard') /*inertia('Home')*/)->name('settings');
+    Route::group(['prefix' => 'profile'], function () {
+        Route::name('profile')->group(function () {
+            $path = "private/profile";
+            Route::get('/', fn () =>inertia($path));
+            Route::get('/security', fn () =>inertia("$path/security"))->name('.security');
+        });
+    });
+
+    Route::get('/settings', fn () =>view('dashboard') /*inertia('Home')*/)->name('settings');
 });

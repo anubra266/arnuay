@@ -32,11 +32,11 @@ const NewAccount = () => {
                 <Account
                     title="Add a new account"
                     description="Diversify your outlets"
-                    bg={mode("white", "gray.700")}
-                    _hover={{ bg: mode("gray.200", "gray.600") }}
+                    bg="transparent"
+                    _hover={{ bg: mode("gray.200", "gray.800") }}
                     icon={
                         <Icon
-                            color={mode("brand.600", "gray.900")}
+                            color={mode("brand.600", "brand.400")}
                             as={IoMdAddCircle}
                             boxSize="full"
                         />

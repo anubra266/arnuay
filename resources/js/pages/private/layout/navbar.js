@@ -12,7 +12,10 @@ import {
     VStack,
     IconButton,
     CloseButton,
+    Tooltip,
 } from "@chakra-ui/react";
+import { useViewportScroll } from "framer-motion";
+
 import { AiOutlineMenu, AiFillBell } from "react-icons/ai";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import ThemeSwitch from "@/app/theme-toggle";
@@ -45,7 +48,28 @@ const NavLink = (props) => {
         />
     );
 };
-
+const Logout = () => {
+    return (
+        <Tooltip
+            shouldWrapChildren
+            hasArrow
+            label="Logout"
+            placement="bottom-start"
+        >
+            <NavLink
+                as={IconButton}
+                href={route("logout")}
+                method="post"
+                color="gray.50"
+                fontSize="sm"
+                icon={<FaPowerOff />}
+                isRound
+            >
+                Logout
+            </NavLink>
+        </Tooltip>
+    );
+};
 const Routes = (props) => {
     return (
         <Fragment>
@@ -70,7 +94,7 @@ const Routes = (props) => {
 export default function Navbar() {
     const { bg } = useContext(LayoutContext);
     const mobileNav = useDisclosure();
-
+    
     return (
         <React.Fragment>
             <chakra.header
@@ -202,18 +226,9 @@ export default function Navbar() {
                                 as={ThemeSwitch}
                                 color="gray.50"
                                 fontSize="sm"
+                                isRound
                             />
-
-                            <NavLink
-                                as={IconButton}
-                                href={route("logout")}
-                                method="post"
-                                color="gray.50"
-                                fontSize="sm"
-                                icon={<FaPowerOff />}
-                            >
-                                Logout
-                            </NavLink>
+                            <Logout />
                         </HStack>
                     </HStack>
                 </Flex>

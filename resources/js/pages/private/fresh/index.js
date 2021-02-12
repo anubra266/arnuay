@@ -1,5 +1,5 @@
 import React, { Fragment, createRef } from "react";
-import Layout from "../layout/main";
+import Layout from "~/pages/private/layout/main";
 import { Box, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
 const header = createRef();

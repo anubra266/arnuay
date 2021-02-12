@@ -1,5 +1,6 @@
 import { AiFillHome } from "react-icons/ai";
-import { FaMoneyBill, FaUser } from "react-icons/fa";
+import { RiUserSettingsFill } from "react-icons/ri";
+import { FaMoneyBill } from "react-icons/fa";
 export const routes = [
     {
         label: "home",
@@ -14,6 +15,6 @@ export const routes = [
     {
         label: "profile",
         name: "profile",
-        Icon: FaUser,
+        Icon: RiUserSettingsFill,
     },
 ];

@@ -15,7 +15,7 @@ const Layout = ({ children, dhead }, header) => {
     const [svgBg] = useToken("colors", [mode("gray.50", "gray.900")]);
     return (
         <LayoutProvider value={{ bg }}>
-            <Box fontFamily="fantasy">
+            <Box fontFamily="fantasy" pos="relative">
                 <Navbar />
                 <Flex
                     pos="relative"
@@ -38,21 +38,6 @@ const Layout = ({ children, dhead }, header) => {
                         alignItems="center"
                     ></Flex>
                 </Flex>
-                <Box pos="relative" h="65px" bg={bg} overflow="visible">
-                    <chakra.svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 1440 56"
-                        w="full"
-                        pos="absolute"
-                        bottom={0}
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M1440,0.507176672 L1440,56 L0,56 L0,0.507176672 C311.728076,35.5023922 551.728076,53 720,53 C888.271924,53 1128.27192,35.5023922 1440,0.507176672 Z"
-                            fill={svgBg}
-                        ></path>
-                    </chakra.svg>
-                </Box>
                 {dhead && (
                     <Image
                         pos="absolute"
@@ -66,6 +51,21 @@ const Layout = ({ children, dhead }, header) => {
                         pointerEvents="none"
                     />
                 )}
+                <Box pos="relative" h="65px" bg={bg} overflow="visible">
+                    <chakra.svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1440 56"
+                        w="full"
+                        pos="absolute"
+                        bottom={-1}
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M1440,0.507176672 L1440,56 L0,56 L0,0.507176672 C311.728076,35.5023922 551.728076,53 720,53 C888.271924,53 1128.27192,35.5023922 1440,0.507176672 Z"
+                            fill={svgBg}
+                        ></path>
+                    </chakra.svg>
+                </Box>
             </Box>
             <Flex
                 mt="-56px"
@@ -73,6 +73,7 @@ const Layout = ({ children, dhead }, header) => {
                 justifyContent="center"
                 w="full"
                 direction="column"
+                mb={10}
             >
                 {children}
             </Flex>

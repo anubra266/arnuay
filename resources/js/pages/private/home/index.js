@@ -24,5 +24,5 @@ const Home = () => {
     );
 };
 
-Home.layout = (page) => <Layout dhead ref={header} children={page} />;
+Home.layout = (page) => <Layout ref={header} children={page} />;
 export default Home;
