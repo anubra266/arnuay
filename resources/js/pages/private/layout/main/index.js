@@ -11,7 +11,7 @@ import Navbar from "../navbar";
 import LayoutProvider from "../context";
 
 const Layout = ({ children, dhead }, header) => {
-    const bg = mode("brand.600", "gray.900");
+    const bg = mode("brand.700", "gray.900");
     const [svgBg] = useToken("colors", [mode("gray.50", "gray.900")]);
     return (
         <LayoutProvider value={{ bg }}>

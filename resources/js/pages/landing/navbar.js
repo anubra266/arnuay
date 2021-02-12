@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useViewportScroll } from "framer-motion";
-import ThemeSwitch from "~/components/app/theme-toggle";
+import ThemeSwitch from "@/app/theme-toggle";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 
 import {
     chakra,
@@ -23,7 +23,9 @@ import { LayoutContext } from "./context";
 
 const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
-
+    const fDOMProps = Object.keys(props)
+        .filter((k) => !["active", "href"].includes(k))
+        .reduce((acc, nxt) => ((acc[nxt] = props[nxt]), acc), {});
     const activeStyle = {
         color: mode(bg),
     };
@@ -38,8 +40,30 @@ const NavLink = (props) => {
             pointerEvents={props.active && "none"}
             {...(props.active && activeStyle)}
             _hover={activeStyle}
-            {...props}
+            {...fDOMProps}
         />
+    );
+};
+
+const Routes = (props) => {
+    return (
+        <Fragment>
+            {routes.map(({ label, name, Icon }, mid) => {
+                const active =
+                    route().current(name) || route().current(name + ".*");
+                return (
+                    <NavLink
+                        href={route(name)}
+                        key={mid}
+                        active={active}
+                        leftIcon={<Icon />}
+                        {...props}
+                    >
+                        {label}
+                    </NavLink>
+                );
+            })}{" "}
+        </Fragment>
     );
 };
 export default function Navbar() {
@@ -97,19 +121,7 @@ export default function Navbar() {
                                     justifySelf="self-start"
                                     onClick={mobileNav.onClose}
                                 />
-                                {routes.map(({ label, path, Icon }, mid) => {
-                                    return (
-                                        <NavLink
-                                            href={route(path)}
-                                            key={mid}
-                                            active={route().current(path)}
-                                            leftIcon={<Icon />}
-                                            size="md"
-                                        >
-                                            {label}
-                                        </NavLink>
-                                    );
-                                })}
+                                <Routes size="md" />
                             </VStack>
                         </Box>
                         <HStack
@@ -147,18 +159,7 @@ export default function Navbar() {
                             spacing={3}
                             display={{ base: "none", md: "inline-flex" }}
                         >
-                            {routes.map(({ label, path, Icon }, mid) => {
-                                return (
-                                    <NavLink
-                                        href={route(path)}
-                                        key={mid}
-                                        active={route().current(path)}
-                                        leftIcon={<Icon />}
-                                    >
-                                        {label}
-                                    </NavLink>
-                                );
-                            })}
+                            <Routes />
 
                             <NavLink
                                 as={IconButton}

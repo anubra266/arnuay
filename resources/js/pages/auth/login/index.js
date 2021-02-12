@@ -14,8 +14,8 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../layout";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { BottomLink } from "@/guest/auth";
-import Formy from "@/guest/auth/formy";
+import { BottomLink } from "~/components/auth";
+import Formy from "@/app/formy";
 import { signin } from "~/actions/auth/login";
 const Login = () => {
     const [show, setShow] = useState(false);

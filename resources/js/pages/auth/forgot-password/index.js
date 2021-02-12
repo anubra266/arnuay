@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import {
     Text,
     FormControl,
@@ -9,7 +9,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import Layout from "../layout";
-import { CFormLabel, BottomLink } from "@/guest/auth";
+import { CFormLabel, BottomLink } from "~/components/auth";
 
 const Register = () => {
     return (

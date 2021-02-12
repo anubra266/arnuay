@@ -11,9 +11,9 @@ import {
     Box,
 } from "@chakra-ui/react";
 import Layout from "../layout";
-import { CFormLabel, PasswordVisibility, BottomLink } from "@/guest/auth";
-import Formy from "@/guest/auth/formy";
-import PasswordStrength from "@/guest/auth/password-strength";
+import { CFormLabel, PasswordVisibility, BottomLink } from "~/components/auth";
+import Formy from "@/app/formy";
+import PasswordStrength from "~/components/auth/password-strength";
 import { signup } from "~/actions/auth/register";
 
 const Register = () => {
