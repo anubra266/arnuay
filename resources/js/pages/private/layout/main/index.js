@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import {
     chakra,
     Box,
-    useColorModeValue,
+    useColorModeValue as mode,
     useToken,
     Flex,
     Image,
@@ -10,21 +10,19 @@ import {
 import Navbar from "../navbar";
 import LayoutProvider from "../context";
 
-const Layout = ({ children }, header) => {
-    const bg = useColorModeValue("brand.600", "gray.900");
-    const [svgBg] = useToken("colors", [
-        useColorModeValue("gray.50", "gray.900"),
-    ]);
+const Layout = ({ children, dhead }, header) => {
+    const bg = mode("brand.600", "gray.900");
+    const [svgBg] = useToken("colors", [mode("gray.50", "gray.900")]);
     return (
         <LayoutProvider value={{ bg }}>
-            <Box>
+            <Box fontFamily="fantasy">
                 <Navbar />
                 <Flex
                     pos="relative"
                     w="full"
                     bg={bg}
                     color="gray.50"
-                    h={{ sm: 250, md: 332 }}
+                    h={dhead && { sm: 250, md: 332 }}
                     minH={150}
                     justifyContent="center"
                     alignItems="center"
@@ -55,23 +53,26 @@ const Layout = ({ children }, header) => {
                         ></path>
                     </chakra.svg>
                 </Box>
-                <Image
-                    pos="absolute"
-                    left="50%"
-                    transform="translateX(-50%)"
-                    top={0}
-                    src="/img/header-bg.png"
-                    h="full"
-                    w={700}
-                    maxW="100%"
-                    pointerEvents="none"
-                />
+                {dhead && (
+                    <Image
+                        pos="absolute"
+                        left="50%"
+                        transform="translateX(-50%)"
+                        top={0}
+                        src="/img/header-bg.png"
+                        h="full"
+                        w={700}
+                        maxW="100%"
+                        pointerEvents="none"
+                    />
+                )}
             </Box>
             <Flex
                 mt="-56px"
                 alignItems="center"
-                w="full"
                 justifyContent="center"
+                w="full"
+                direction="column"
             >
                 {children}
             </Flex>

@@ -4,7 +4,7 @@ import {
     chakra,
     Box,
     Flex,
-    useColorModeValue,
+    useColorModeValue as mode,
     VisuallyHidden,
     HStack,
     Button,
@@ -25,7 +25,7 @@ const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
 
     const activeStyle = {
-        color: useColorModeValue(bg),
+        color: mode(bg),
     };
     return (
         <CInertiaLink
@@ -122,6 +122,7 @@ export default function Navbar() {
                                 href="/"
                                 letterSpacing="widest"
                                 fontSize="3xl"
+                                _hover={{ color: "white" }}
                             >
                                 Arnuay
                                 <VisuallyHidden>Arnuay</VisuallyHidden>
@@ -187,7 +188,11 @@ export default function Navbar() {
                                     </>
                                 }
                             />
-                            <NavLink as={ThemeSwitch} color="gray.50" />
+                            <NavLink
+                                as={ThemeSwitch}
+                                color="gray.50"
+                                fontSize="sm"
+                            />
                         </HStack>
                     </HStack>
                 </Flex>
