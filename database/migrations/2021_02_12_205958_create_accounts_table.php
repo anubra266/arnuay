@@ -15,7 +15,8 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            //TODO string Id for the account
+            $table->unsignedBigInteger('user_id');
+            $table->string('ref')->unique();
             $table->longText('name');
             $table->string('bank');
             $table->string('account_number');
