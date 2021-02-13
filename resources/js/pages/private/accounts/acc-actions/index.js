@@ -17,12 +17,6 @@ const Actions = () => {
             maxW="90%"
             px={2}
         >
-            <Action icon={FaDollarSign} action="buy">
-                Buy
-            </Action>
-            <Action icon={IoMdCash} action="sell">
-                Sell
-            </Action>
             <Action icon={IoMdSend} action="send">
                 Send
             </Action>

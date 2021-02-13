@@ -39,6 +39,10 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'flash' => fn () => $request->session()
                 ->only(['success', 'error', 'warning', 'info']),
+            'user' => fn () => $request->user()
+                ? $request->user()->only('id', 'name', 'email')
+                : null,
+            'netWorth' => fn () => authUser()->accounts()->with('wallet')->get()->sum('balance'),
         ]);
     }
 }

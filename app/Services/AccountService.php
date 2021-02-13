@@ -14,7 +14,6 @@ class AccountService
     public function index()
     {
         $accounts = authUser()->accounts()->with('wallet')->get();
-        // dd($accounts);
         return $accounts;
     }
 

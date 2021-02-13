@@ -23,6 +23,8 @@ import { routes } from "./routes";
 
 import { LayoutContext } from "./context";
 import { FaPowerOff } from "react-icons/fa";
+import { usePage } from "@inertiajs/inertia-react";
+import { toWords } from "~/Helpers/string";
 
 const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
@@ -93,7 +95,7 @@ const Routes = (props) => {
 export default function Navbar() {
     const { bg } = useContext(LayoutContext);
     const mobileNav = useDisclosure();
-
+    const { netWorth } = usePage().props;
     return (
         <>
             <chakra.header
@@ -173,12 +175,13 @@ export default function Navbar() {
                             </CInertiaLink>
                             <CInertiaLink
                                 href={route("accounts")}
-                                fontSize="lg"
+                                fontSize="md"
                                 opacity={0.7}
                                 _hover={{ opacity: 1, color: "white" }}
                                 transition="opacity 0.1s ease-in-out"
+                                textTransform="capitalize"
                             >
-                                NGN 19,000
+                                {toWords(netWorth)} naira
                             </CInertiaLink>
                         </HStack>
                     </HStack>

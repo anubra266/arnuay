@@ -22,12 +22,6 @@ const Action = (props) => {
     const parseAction = () => {
         var event;
         switch (props.action) {
-            case "buy":
-                event = "Buy with";
-                break;
-            case "sell":
-                event = "Sell with";
-                break;
             case "send":
                 event = "Send from";
                 break;
