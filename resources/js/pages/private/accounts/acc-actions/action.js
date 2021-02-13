@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     Text,
     Icon,
@@ -15,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 
 import { Account } from "../list";
+import { AccountsContext } from "../context";
+import { parseAmount } from "~/Helpers/string";
 
 const Action = (props) => {
     const col = mode("brand.700");
@@ -22,6 +24,12 @@ const Action = (props) => {
     const parseAction = () => {
         var event;
         switch (props.action) {
+            case "deposit":
+                event = "Deposit to";
+                break;
+            case "withdraw":
+                event = "Withdraw from";
+                break;
             case "send":
                 event = "Send from";
                 break;
@@ -34,6 +42,7 @@ const Action = (props) => {
         }
         return event;
     };
+    const { accounts } = useContext(AccountsContext);
     return (
         <>
             <VStack
@@ -78,18 +87,15 @@ const Action = (props) => {
                             </DrawerHeader>
                             <DrawerBody>
                                 <SimpleGrid columns={1} spacing={2} mt={2}>
-                                    <Account
-                                        title="Anuoluwapo Abraham"
-                                        description="NGN 18,000.00"
-                                    />
-                                    <Account
-                                        name="Jolly Cafe"
-                                        description="NGN 0.00"
-                                    />
-                                    <Account
-                                        name="Anchor Cafe"
-                                        description="NGN 1,000.00"
-                                    />
+                                    {accounts.map((acc, acid) => (
+                                        <Account
+                                            key={acid}
+                                            name={acc.name}
+                                            description={`NGN ${parseAmount(
+                                                acc.wallet.balance
+                                            )}`}
+                                        />
+                                    ))}
                                 </SimpleGrid>
                             </DrawerBody>
                         </Box>

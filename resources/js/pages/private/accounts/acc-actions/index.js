@@ -14,9 +14,15 @@ const Actions = () => {
             rounded="md"
             zIndex={1}
             alignSelf="center"
-            maxW="90%"
+            maxW="99%"
             px={2}
         >
+            <Action icon={FaDollarSign} action="deposit">
+                Deposit
+            </Action>
+            <Action icon={IoMdCash} action="withdraw">
+                Withdraw
+            </Action>
             <Action icon={IoMdSend} action="send">
                 Send
             </Action>

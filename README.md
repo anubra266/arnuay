@@ -16,12 +16,3 @@ __Arnuay__ is an app that facillitates Payments without cash.
 * [ReactJs](https://reactjs.org)
 * [InertiaJs](https://inertiajs.com)
 * [Fortify](https://laravel.com/docs/8.x/fortify)
-
-## Features
-* [ ] Authentication
-* [ ] Register Shop
-* [ ] Add Shop to Favorites
-* [ ] Deposit to Wallet
-* [ ] Withdraw from Wallet
-* [ ] Transfer Funds
-* [ ] Pay to Shop

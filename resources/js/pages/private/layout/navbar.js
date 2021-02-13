@@ -104,19 +104,13 @@ export default function Navbar() {
                 px={{ base: 2, sm: 4, md: 20 }}
                 py={4}
                 color="gray.50"
-                zIndex="tooltip"
             >
                 <Flex
                     alignItems="center"
                     justifyContent="space-between"
                     mx="auto"
                 >
-                    <HStack
-                        display="flex"
-                        spacing={3}
-                        alignItems="center"
-                        zIndex="popover"
-                    >
+                    <HStack display="flex" spacing={3} alignItems="center">
                         <Box display={{ base: "inline-flex", md: "none" }}>
                             <NavLink
                                 as={IconButton}
