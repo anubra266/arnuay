@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import NewAccount from "./new-account";
-import { CommaFormatted } from "~/Helpers/string";
+import { parseAmount } from "~/Helpers/string";
 export const Account = (props) => {
     return (
         <Box
@@ -53,9 +53,7 @@ const Accounts = ({ accounts }) => {
                     <Account
                         key={acid}
                         name={acc.name}
-                        description={`NGN ${CommaFormatted(
-                            acc.wallet.balance
-                        )}`}
+                        description={`NGN ${parseAmount(acc.wallet.balance)}`}
                     />
                 ))}
                 <NewAccount />

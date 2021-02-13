@@ -1,3 +1,12 @@
+export function parseAmount(amount) {
+    return CommaFormatted(convertDecimal(amount));
+}
+
+export function convertDecimal(amount) {
+    amount = parseFloat(amount);
+    return amount.toFixed(2);
+}
+
 export function CommaFormatted(amount) {
     var delimiter = ","; // replace comma if desired
     var a = amount.split(".", 2);

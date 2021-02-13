@@ -16,7 +16,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import Assets from "@/app/assets";
 
 const Layout = ({ children, dhead, subpage }, header) => {
-    const bg = mode("brand.700", "gray.900");
+    const bg = mode("brand.700", "gray.800");
     const [svgBg] = useToken("colors", [mode("gray.50", "gray.900")]);
     return (
         <LayoutProvider value={{ bg }}>

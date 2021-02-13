@@ -60,7 +60,7 @@ const AccountForm = ({ isOpen, onClose }) => {
         createAccount(values, setLoading, setErrors).then(() => resetFields());
     };
     return (
-        <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+        <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="sm">
             <DrawerOverlay>
                 <DrawerContent>
                     <Formy
@@ -139,7 +139,6 @@ const AccountForm = ({ isOpen, onClose }) => {
                                             </FormErrorMessage>
                                             <HStack>
                                                 <PinInput
-                                                    size="xs"
                                                     focusBorderColor="brand.400"
                                                     {...account_number}
                                                     onChange={(val) =>
