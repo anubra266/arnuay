@@ -1,4 +1,4 @@
-import React, { Fragment, createRef, forwardRef } from "react";
+import React, { createRef, forwardRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
@@ -7,7 +7,7 @@ const header = createRef();
 
 const PersonalInfo = (props) => {
     return (
-        <Fragment>
+        <>
             <Header portal={header} />
             <Box
                 w={520}
@@ -31,7 +31,7 @@ const PersonalInfo = (props) => {
                     <Name {...props} />
                 </Flex>
             </Box>
-        </Fragment>
+        </>
     );
 };
 

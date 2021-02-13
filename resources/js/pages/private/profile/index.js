@@ -1,4 +1,4 @@
-import React, { Fragment, createRef } from "react";
+import React, { createRef } from "react";
 import Layout from "../layout/main";
 import { RiProfileFill, RiUserSharedFill } from "react-icons/ri";
 import { MdSecurity } from "react-icons/md";
@@ -13,7 +13,7 @@ const header = createRef();
 
 const Profile = () => {
     return (
-        <Fragment>
+        <>
             <Header portal={header} />
             <Stack>
                 <Menu
@@ -36,7 +36,7 @@ const Profile = () => {
                     onClick={() => Inertia.post(route("logout"))}
                 />
             </Stack>
-        </Fragment>
+        </>
     );
 };
 

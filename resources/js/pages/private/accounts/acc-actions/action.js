@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {
     Text,
     Icon,
@@ -41,7 +41,7 @@ const Action = (props) => {
         return event;
     };
     return (
-        <Fragment>
+        <>
             <VStack
                 py={2}
                 px={4}
@@ -102,7 +102,7 @@ const Action = (props) => {
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>
-        </Fragment>
+        </>
     );
 };
 export default Action;

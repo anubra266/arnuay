@@ -1,4 +1,4 @@
-import React, { Fragment, createRef } from "react";
+import React, { createRef } from "react";
 import Layout from "../layout/main";
 import Header from "./header";
 import Actions from "./acc-actions";
@@ -8,11 +8,11 @@ const header = createRef();
 
 const Accounts = (props) => {
     return (
-        <Fragment>
+        <>
             <Header portal={header} />
             <Actions />
             <AccountsList {...props} />
-        </Fragment>
+        </>
     );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState  } from "react";
 import {
     Text,
     FormControl,
@@ -30,7 +30,7 @@ const Register = () => {
             });
     };
     return (
-        <Fragment>
+        <>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Create an account
             </Text>
@@ -165,7 +165,7 @@ const Register = () => {
                     Forgot Password?
                 </BottomLink>
             </Stack>
-        </Fragment>
+        </>
     );
 };
 Register.layout = (page) => <Layout children={page} />;

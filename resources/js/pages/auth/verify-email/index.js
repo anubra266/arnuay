@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState  } from "react";
 import { Text, Stack, Button } from "@chakra-ui/react";
 import Layout from "../layout";
 import CInertiaLink from "@/app/chakra-inertia-link";
@@ -13,7 +13,7 @@ const VerifyEmail = () => {
     };
 
     return (
-        <Fragment>
+        <>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Verify your email.
             </Text>
@@ -53,7 +53,7 @@ const VerifyEmail = () => {
                     Logout
                 </CInertiaLink>
             </Stack>
-        </Fragment>
+        </>
     );
 };
 VerifyEmail.layout = (page) => <Layout children={page} />;

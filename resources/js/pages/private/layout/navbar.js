@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from "react";
+import React, { useContext } from "react";
 
 import {
     chakra,
@@ -71,7 +71,7 @@ const Logout = () => {
 };
 const Routes = (props) => {
     return (
-        <Fragment>
+        <>
             {routes.map(({ label, name, Icon }, mid) => {
                 const active =
                     route().current(name) || route().current(`${name}.*`);
@@ -87,7 +87,7 @@ const Routes = (props) => {
                     </NavLink>
                 );
             })}{" "}
-        </Fragment>
+        </>
     );
 };
 export default function Navbar() {
@@ -95,7 +95,7 @@ export default function Navbar() {
     const mobileNav = useDisclosure();
 
     return (
-        <React.Fragment>
+        <>
             <chakra.header
                 bg={bg}
                 w="full"
@@ -204,6 +204,6 @@ export default function Navbar() {
                     </HStack>
                 </Flex>
             </chakra.header>
-        </React.Fragment>
+        </>
     );
 }

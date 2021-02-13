@@ -32,7 +32,7 @@ export default function Gslr() {
     }, [scrollY]);
 
     return (
-        <React.Fragment>
+        <>
             <chakra.header
                 bg={bg}
                 px={{ base: 2, sm: 4 }}
@@ -141,6 +141,6 @@ export default function Gslr() {
                     </HStack>
                 </Flex>
             </chakra.header>
-        </React.Fragment>
+        </>
     );
 }

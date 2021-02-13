@@ -1,4 +1,4 @@
-import React, { Fragment, createRef } from "react";
+import React, { createRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
@@ -8,7 +8,7 @@ const header = createRef();
 
 const Security = () => {
     return (
-        <Fragment>
+        <>
             <Header portal={header} />
             <Box
                 w={520}
@@ -42,7 +42,7 @@ const Security = () => {
                     />
                 </Flex>
             </Box>
-        </Fragment>
+        </>
     );
 };
 

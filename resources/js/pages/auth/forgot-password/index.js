@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {
     Text,
     FormControl,
@@ -13,7 +13,7 @@ import { CFormLabel, BottomLink } from "~/components/auth";
 
 const Register = () => {
     return (
-        <Fragment>
+        <>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Reset Password
             </Text>
@@ -41,7 +41,7 @@ const Register = () => {
                 <BottomLink href={route("login")}>Sign In?</BottomLink>
                 <BottomLink href={route("register")}>Sign Up?</BottomLink>
             </Stack>
-        </Fragment>
+        </>
     );
 };
 Register.layout = (page) => <Layout children={page} />;

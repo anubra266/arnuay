@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import InlineSubMenu from "@/app/inline-submenu";
 
 import { MdContacts } from "react-icons/md";
@@ -16,7 +16,7 @@ const Name = ({ info }) => {
                 .catch((err) => setErr(err));
     };
     return (
-        <Fragment>
+        <>
             <InlineSubMenu
                 field="name"
                 defaultValue={info.name}
@@ -28,7 +28,7 @@ const Name = ({ info }) => {
             <Text fontSize="sm" color="red.400" mx="auto">
                 {errors?.name}
             </Text>
-        </Fragment>
+        </>
     );
 };
 

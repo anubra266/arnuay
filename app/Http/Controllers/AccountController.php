@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\AccountService;
+use App\Http\Requests\AccountRequest;
 
 class AccountController extends Controller
 {
@@ -16,5 +17,11 @@ class AccountController extends Controller
     {
         $accounts = $this->accountService->index();
         return inertia("private/accounts", ['accounts' => $accounts]);
+    }
+
+    public function store(AccountRequest $request)
+    {
+        $this->accountService->store($request);
+        return back()->with('success', ['Create Account', 'Account Created Successfully']);
     }
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Account } from "./";
 import { IoMdAddCircle } from "react-icons/io";
 import {
@@ -17,17 +17,19 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
-    NumberInput,
-    NumberInputField,
     Select,
     Button,
+    PinInput,
+    PinInputField,
+    HStack,
 } from "@chakra-ui/react";
 import Formy from "@/app/formy";
 import { CFormLabel } from "~/components/auth";
+import { createAccount } from "~/actions/accounts/create-account";
 const NewAccount = () => {
     const newAccount = useDisclosure();
     return (
-        <Fragment>
+        <>
             <Box onClick={newAccount.onOpen}>
                 <Account
                     title="Add a new account"
@@ -44,7 +46,7 @@ const NewAccount = () => {
                 />
             </Box>
             <AccountForm {...newAccount} />
-        </Fragment>
+        </>
     );
 };
 
@@ -54,113 +56,134 @@ const AccountForm = ({ isOpen, onClose }) => {
     const [errors, setErrors] = useState();
     const [loading, setLoading] = useState(false);
 
-    const createAccount = (values) => {
-        console.log("values", values);
+    const handleCreateAccount = (values, resetFields) => {
+        createAccount(values, setLoading, setErrors).then(() => resetFields());
     };
     return (
         <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay>
                 <DrawerContent>
-                    <DrawerHeader borderBottomWidth="1px">
-                        Create a new account
-                    </DrawerHeader>
-                    <DrawerBody>
-                        <Formy
-                            initialValues={{
-                                name: "",
-                                bank: "",
-                                account_number: "",
-                            }}
-                            onSubmit={createAccount}
-                        >
-                            {({ name, bank, account_number }) => (
-                                <Stack spacing="24px">
-                                    <FormControl
-                                        id="name"
-                                        isRequired
-                                        isInvalid={errors?.name}
-                                    >
-                                        <CFormLabel>Name</CFormLabel>
-                                        <FormErrorMessage>
-                                            {errors?.name}
-                                        </FormErrorMessage>
-                                        <Input
-                                            type="text"
-                                            placeholder="Account name"
-                                            focusBorderColor="brand.400"
-                                            autoFocus
-                                            {...name}
-                                        />
-                                        <FormHelperText>
-                                            Enter Account Name
-                                        </FormHelperText>
-                                    </FormControl>
+                    <Formy
+                        initialValues={{
+                            name: "",
+                            bank: "",
+                            account_number: "",
+                        }}
+                        onSubmit={handleCreateAccount}
+                    >
+                        {({ name, bank, account_number }, { setValue }) => (
+                            <>
+                                <DrawerHeader borderBottomWidth="1px">
+                                    Create a new account
+                                </DrawerHeader>
+                                <DrawerBody>
+                                    <Stack spacing="24px">
+                                        <FormControl
+                                            id="name"
+                                            isRequired
+                                            isInvalid={errors?.name}
+                                        >
+                                            <CFormLabel>Name</CFormLabel>
+                                            <FormErrorMessage>
+                                                {errors?.name}
+                                            </FormErrorMessage>
+                                            <Input
+                                                type="text"
+                                                placeholder="Account name"
+                                                focusBorderColor="brand.400"
+                                                autoFocus
+                                                {...name}
+                                            />
+                                            <FormHelperText>
+                                                Enter Account Name
+                                            </FormHelperText>
+                                        </FormControl>
 
-                                    <FormControl
-                                        id="bank"
-                                        isRequired
-                                        isInvalid={errors?.bank}
-                                    >
-                                        <CFormLabel>
-                                            Bank Name (For payouts)
-                                        </CFormLabel>
-                                        <FormErrorMessage>
-                                            {errors?.bank}
-                                        </FormErrorMessage>
-                                        <Select
+                                        <FormControl
                                             id="bank"
-                                            defaultValue=""
-                                            placeholder="Select Bank"
-                                            {...bank}
+                                            isRequired
+                                            isInvalid={errors?.bank}
                                         >
-                                            <option value="ac">
-                                                Access Bank
-                                            </option>
-                                            <option value="gt">GT Bank</option>
-                                        </Select>
-                                        <FormHelperText>
-                                            Enter Account Bank
-                                        </FormHelperText>
-                                    </FormControl>
-                                    <FormControl
-                                        id="account_number"
-                                        isRequired
-                                        isInvalid={errors?.account_number}
+                                            <CFormLabel>
+                                                Bank Name (For payouts)
+                                            </CFormLabel>
+                                            <FormErrorMessage>
+                                                {errors?.bank}
+                                            </FormErrorMessage>
+                                            <Select
+                                                id="bank"
+                                                placeholder="Select Bank"
+                                                onChange={bank.onChange}
+                                            >
+                                                <option value="ac">
+                                                    Access Bank
+                                                </option>
+                                                <option value="gt">
+                                                    GT Bank
+                                                </option>
+                                            </Select>
+                                            <FormHelperText>
+                                                Enter Account Bank
+                                            </FormHelperText>
+                                        </FormControl>
+                                        <FormControl
+                                            id="account_number"
+                                            isRequired
+                                            isInvalid={errors?.account_number}
+                                        >
+                                            <CFormLabel>
+                                                Bank Account Number
+                                            </CFormLabel>
+                                            <FormErrorMessage>
+                                                {errors?.account_number}
+                                            </FormErrorMessage>
+                                            <HStack>
+                                                <PinInput
+                                                    size="xs"
+                                                    focusBorderColor="brand.400"
+                                                    {...account_number}
+                                                    onChange={(val) =>
+                                                        setValue(
+                                                            "account_number",
+                                                            val
+                                                        )
+                                                    }
+                                                >
+                                                    {Array.from(
+                                                        { length: 10 },
+                                                        (_, k) => (
+                                                            <PinInputField
+                                                                key={k}
+                                                            />
+                                                        )
+                                                    )}
+                                                </PinInput>
+                                            </HStack>
+                                            <FormHelperText>
+                                                Enter Bank Account Number
+                                            </FormHelperText>
+                                        </FormControl>
+                                    </Stack>
+                                </DrawerBody>
+                                <DrawerFooter borderTopWidth="1px">
+                                    <Button
+                                        variant="outline"
+                                        mr={3}
+                                        onClick={onClose}
                                     >
-                                        <CFormLabel>
-                                            Bank Account Number
-                                        </CFormLabel>
-                                        <FormErrorMessage>
-                                            {errors?.account_number}
-                                        </FormErrorMessage>
-                                        <NumberInput
-                                            defaultValue={15}
-                                            precision={2}
-                                            focusBorderColor="brand.400"
-                                            {...account_number}
-                                        >
-                                            <NumberInputField />
-                                        </NumberInput>
-                                        <FormHelperText>
-                                            Enter Bank Account Number
-                                        </FormHelperText>
-                                    </FormControl>
-                                </Stack>
-                            )}
-                        </Formy>
-                    </DrawerBody>
-                    <DrawerFooter borderTopWidth="1px">
-                        <Button variant="outline" mr={3} onClick={onClose}>
-                            Cancel
-                        </Button>
-                        <Button
-                            isLoading={loading}
-                            colorScheme="brand"
-                            type="submit"
-                        >
-                            Submit
-                        </Button>
-                    </DrawerFooter>
+                                        Cancel
+                                    </Button>
+                                    <Button
+                                        isLoading={loading}
+                                        colorScheme="brand"
+                                        type="submit"
+                                    >
+                                        Submit
+                                    </Button>
+                                </DrawerFooter>
+                            </>
+                        )}
+                    </Formy>
                 </DrawerContent>
             </DrawerOverlay>
         </Drawer>

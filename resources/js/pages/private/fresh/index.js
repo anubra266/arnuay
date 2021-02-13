@@ -1,4 +1,4 @@
-import React, { Fragment, createRef } from "react";
+import React, { createRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
@@ -6,7 +6,7 @@ const header = createRef();
 
 const Home = () => {
     return (
-        <Fragment>
+        <>
             <Header portal={header} />
             <Box
                 w={500}
@@ -20,7 +20,7 @@ const Home = () => {
             >
                 <h1>Home</h1>
             </Box>
-        </Fragment>
+        </>
     );
 };
 

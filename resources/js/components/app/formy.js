@@ -24,13 +24,15 @@ const Formy = (props) => {
             [field]: value,
         }));
     };
+    const resetFields = () => setValues(props.initialValues);
+
     const submitForm = (e) => {
         e.preventDefault();
-        props.onSubmit(values, setValue);
+        props.onSubmit(values, resetFields, setValue);
     };
     return (
         <form onSubmit={submitForm}>
-            {props.children(fieldProps, { setValue })}
+            {props.children(fieldProps, { setValue, setValues, resetFields })}
         </form>
     );
 };

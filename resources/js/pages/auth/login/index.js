@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import {
     Text,
     FormControl,
@@ -30,7 +30,7 @@ const Login = () => {
             });
     };
     return (
-        <Fragment>
+        <>
             <Text fontSize="2xl" mb={5} fontWeight="extrabold">
                 Sign in to your account
             </Text>
@@ -112,7 +112,7 @@ const Login = () => {
                 </BottomLink>
                 <BottomLink href={route("register")}>Register?</BottomLink>
             </Stack>
-        </Fragment>
+        </>
     );
 };
 Login.layout = (page) => <Layout children={page} />;

@@ -9,6 +9,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['prefix' => 'accounts', 'middleware' => 'profile.setup'], function () {
         Route::name('accounts')->group(function () {
             Route::get('/', 'AccountController@index');
+            Route::post('/create', 'AccountController@store')->name('.create');
         });
     });
 

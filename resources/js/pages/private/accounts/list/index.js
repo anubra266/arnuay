@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {
     Box,
     SimpleGrid,
@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import NewAccount from "./new-account";
+import { CommaFormatted } from "~/Helpers/string";
 export const Account = (props) => {
     return (
         <Box
@@ -46,22 +47,20 @@ export const Account = (props) => {
 };
 const Accounts = ({ accounts }) => {
     return (
-        <Fragment>
+        <>
             <SimpleGrid columns={[1, null, 2]} spacing={5} mt={10}>
-                <Account
-                    title="Anuoluwapo Abraham"
-                    description="NGN 18,000.00"
-                />
                 {accounts.map((acc, acid) => (
                     <Account
                         key={acid}
                         name={acc.name}
-                        description={`NGN ${acc.balance}`}
+                        description={`NGN ${CommaFormatted(
+                            acc.wallet.balance
+                        )}`}
                     />
                 ))}
                 <NewAccount />
             </SimpleGrid>
-        </Fragment>
+        </>
     );
 };
 

@@ -13,6 +13,14 @@ class AccountService
 
     public function index()
     {
-        return authUser()->accounts()->with('wallet')->get();
+        $accounts = authUser()->accounts()->with('wallet')->get();
+        // dd($accounts);
+        return $accounts;
+    }
+
+    public function store($request)
+    {
+        $account = $request->validated();
+        authUser()->accounts()->create($account);
     }
 }

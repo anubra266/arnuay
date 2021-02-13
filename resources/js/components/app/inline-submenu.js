@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { useRef } from "react";
 import { Editable, EditableInput, EditablePreview } from "@chakra-ui/react";
 
 import { SubMenu, MenuIcon } from "~/pages/private/profile/menu";
@@ -18,7 +18,7 @@ const InlineSubMenu = (props) => {
         </Editable>
     );
     return (
-        <Fragment>
+        <>
             <SubMenu
                 title={props.field}
                 description={EditInfo}
@@ -26,7 +26,7 @@ const InlineSubMenu = (props) => {
                 onClick={() => ref.current.focus()}
                 last={props.last ? "1" : "2"}
             />
-        </Fragment>
+        </>
     );
 };
 
