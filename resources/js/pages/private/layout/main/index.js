@@ -83,19 +83,22 @@ const Layout = ({ children, dhead, subpage }, header) => {
                 >
                     {children}
                     {window.history.length > 1 && subpage && (
-                        <HStack
+                        <Box
                             color={mode("brand.600")}
                             fontSize="md"
                             fontWeight="bold"
                             mt={5}
-                            justifySelf="start"
-                            onClick={() => window.history.back()}
-                            cursor="pointer"
                             w={520}
                         >
-                            <Icon as={AiOutlineArrowLeft} />
-                            <Text textTransform="uppercase">Back</Text>
-                        </HStack>
+                            <HStack
+                                onClick={() => window.history.back()}
+                                cursor="pointer"
+                                mr="auto"
+                            >
+                                <Icon as={AiOutlineArrowLeft} />
+                                <Text textTransform="uppercase">Back</Text>
+                            </HStack>
+                        </Box>
                     )}
                 </Flex>
             </Assets>

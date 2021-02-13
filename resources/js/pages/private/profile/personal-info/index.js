@@ -1,12 +1,11 @@
-import React, { Fragment, createRef } from "react";
+import React, { Fragment, createRef, forwardRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
-import { SubMenu, MenuIcon } from "../menu";
-import { MdContacts } from "react-icons/md";
+import Name from "./name";
 const header = createRef();
 
-const PersonalInfo = () => {
+const PersonalInfo = (props) => {
     return (
         <Fragment>
             <Header portal={header} />
@@ -29,12 +28,7 @@ const PersonalInfo = () => {
                     Personal Info
                 </Text>
                 <Flex justify="center" direction="column">
-                    <SubMenu
-                        title="Name"
-                        description="Unset"
-                        icon={<MenuIcon as={MdContacts} />}
-                        last="1"
-                    />
+                    <Name {...props} />
                 </Flex>
             </Box>
         </Fragment>

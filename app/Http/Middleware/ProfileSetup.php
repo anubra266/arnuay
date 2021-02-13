@@ -16,7 +16,7 @@ class ProfileSetup
      */
     public function handle(Request $request, Closure $next)
     {
-        $isSetup = !(authUser()->settings()->empty());
+        $isSetup = (authUser()->settings()->get('profile.pinfo'));
         return $isSetup ? $next($request) : redirect(route('profile.pinfo'))
             ->with('info', ['Setup Profile', 'You must complete your personal info first']);
     }

@@ -14,7 +14,6 @@ import {
     CloseButton,
     Tooltip,
 } from "@chakra-ui/react";
-import { useViewportScroll } from "framer-motion";
 
 import { AiOutlineMenu, AiFillBell } from "react-icons/ai";
 import CInertiaLink from "@/app/chakra-inertia-link";
@@ -36,7 +35,7 @@ const NavLink = (props) => {
     return (
         <CInertiaLink
             as={Button}
-            href={props.active ? "#" : props.href}
+            href={props.href}
             variant={props.active ? "solid" : "ghost"}
             w="full"
             size="sm"
@@ -75,7 +74,7 @@ const Routes = (props) => {
         <Fragment>
             {routes.map(({ label, name, Icon }, mid) => {
                 const active =
-                    route().current(name) || route().current(name + ".*");
+                    route().current(name) || route().current(`${name}.*`);
                 return (
                     <NavLink
                         href={route(name)}

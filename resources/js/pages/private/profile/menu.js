@@ -4,7 +4,6 @@ import {
     useColorModeValue as mode,
     Avatar,
     Stack,
-    Text,
     Icon,
     Spacer,
 } from "@chakra-ui/react";
@@ -37,22 +36,22 @@ export const Menu = (props) => {
                     bg={mode("brand.600", "gray.900")}
                 />
                 <Stack spacing={0}>
-                    <Text
+                    <Box
                         fontWeight="bold"
                         textTransform="capitalize"
                         fontSize="md"
                         my="auto"
                     >
                         {props.title}
-                    </Text>
+                    </Box>
                     {props.description && (
-                        <Text
+                        <Box
                             fontWeight="thin"
                             textTransform="capitalize"
                             fontSize="sm"
                         >
                             {props.description}
-                        </Text>
+                        </Box>
                     )}
                 </Stack>
                 <Spacer />
@@ -64,6 +63,7 @@ export const Menu = (props) => {
                     />
                 )}
             </Stack>
+            {props.children}
         </Box>
     );
 };
