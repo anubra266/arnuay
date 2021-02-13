@@ -11,4 +11,10 @@ class AccountController extends Controller
     {
         $this->accountService = $accountService;
     }
+
+    public function index()
+    {
+        $accounts = $this->accountService->index();
+        return inertia("private/accounts", ['accounts' => $accounts]);
+    }
 }

@@ -3,10 +3,10 @@ import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
 import { SubMenu, MenuIcon } from "../menu";
-import { CgPassword } from "react-icons/cg";
+import { MdContacts } from "react-icons/md";
 const header = createRef();
 
-const Security = () => {
+const PersonalInfo = () => {
     return (
         <Fragment>
             <Header portal={header} />
@@ -26,18 +26,13 @@ const Security = () => {
                     color={mode("brand.700")}
                     textAlign="center"
                 >
-                    Security
+                    Personal Info
                 </Text>
                 <Flex justify="center" direction="column">
                     <SubMenu
-                        title="Two-factor authentication"
-                        description="Disabled"
-                        name="2 F A"
-                    />
-                    <SubMenu
-                        title="Password"
-                        description="Last updated on 27 Jun 2018"
-                        icon={<MenuIcon as={CgPassword} />}
+                        title="Name"
+                        description="Unset"
+                        icon={<MenuIcon as={MdContacts} />}
                         last="1"
                     />
                 </Flex>
@@ -46,5 +41,5 @@ const Security = () => {
     );
 };
 
-Security.layout = (page) => <Layout subpage ref={header} children={page} />;
-export default Security;
+PersonalInfo.layout = (page) => <Layout subpage ref={header} children={page} />;
+export default PersonalInfo;

@@ -28,6 +28,7 @@ const Profile = () => {
                 <Menu
                     title="Personal Info"
                     icon={<MenuIcon as={FaUserCircle} />}
+                    onClick={() => Inertia.get(route("profile.pinfo"))}
                 />
                 <Menu
                     title="Sign Out"

@@ -5,10 +5,10 @@ const Header = ({ portal }) => {
     return (
         <Portal containerRef={portal}>
             <Helmet>
-                <title>Security | Arnuay</title>
+                <title>Personal Info | Arnuay</title>
             </Helmet>
             <Flex>
-                <Image src="/img/headers/security.svg" h={250} />
+                <Image src="/img/headers/pinfo.svg" h={250} />
             </Flex>
         </Portal>
     );

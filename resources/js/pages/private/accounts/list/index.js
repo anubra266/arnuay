@@ -44,13 +44,21 @@ export const Account = (props) => {
         </Box>
     );
 };
-const Accounts = () => {
+const Accounts = ({ accounts }) => {
     return (
         <Fragment>
             <SimpleGrid columns={[1, null, 2]} spacing={5} mt={10}>
-                <Account title="Anuoluwapo Abraham" description="NGN 18,000.00" />
-                <Account name="Jolly Cafe" description="NGN 0.00" />
-                <Account name="Anchor Cafe" description="NGN 1,000.00" />
+                <Account
+                    title="Anuoluwapo Abraham"
+                    description="NGN 18,000.00"
+                />
+                {accounts.map((acc, acid) => (
+                    <Account
+                        key={acid}
+                        name={acc.name}
+                        description={`NGN ${acc.balance}`}
+                    />
+                ))}
                 <NewAccount />
             </SimpleGrid>
         </Fragment>

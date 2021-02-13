@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { App } from "@inertiajs/inertia-react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { useProgressBar } from "./components/app/progress-bar";
+import { useProgressBar } from "@/app/progress-bar";
 import theme from "~/theme";
 import ErrorBoundary from "react-errbo";
 

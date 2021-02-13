@@ -56,7 +56,7 @@ export const Menu = (props) => {
                     )}
                 </Stack>
                 <Spacer />
-                {props.submenu === "1" && (
+                {props.submenu && (
                     <Icon
                         as={AiOutlineArrowRight}
                         fontSize="2xl"
@@ -83,7 +83,7 @@ export const SubMenu = (props) => {
             shadow="none"
             rounded="none"
             _hover={{ bg: mode("gray.200", "gray.800") }}
-            submenu="1"
+            submenu={props.arrow ? "1" : null}
             {...(!(props.last === "1") && borderStyle)}
             {...props}
         />

@@ -10,4 +10,9 @@ class AccountService
     {
         $this->account = $account;
     }
+
+    public function index()
+    {
+        return authUser()->accounts()->with('wallet')->get();
+    }
 }

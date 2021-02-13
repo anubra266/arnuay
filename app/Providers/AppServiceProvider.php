@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        require_once app_path('Helpers/AuthUser.php');
+        require_once app_path('Helpers/HashId.php');
     }
 
     /**
