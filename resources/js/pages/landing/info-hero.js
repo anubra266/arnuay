@@ -136,7 +136,7 @@ const InfoHero = (props) => {
                 <Image
                     h={[56, 72, 96, "full"]}
                     w="full"
-                    objectFit="cover"
+                    fit="cover"
                     src={props.image}
                     alt={props.label}
                     loading="lazy"

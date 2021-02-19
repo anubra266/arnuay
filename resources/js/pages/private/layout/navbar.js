@@ -24,7 +24,7 @@ import { routes } from "./routes";
 import { LayoutContext } from "./context";
 import { FaPowerOff } from "react-icons/fa";
 import { usePage } from "@inertiajs/inertia-react";
-import { toWords } from "~/Helpers/string";
+import { roundNum, toWords } from "~/Helpers/string";
 
 const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
@@ -175,7 +175,7 @@ export default function Navbar() {
                                 transition="opacity 0.1s ease-in-out"
                                 textTransform="capitalize"
                             >
-                                {toWords(netWorth)} naira
+                                {toWords(roundNum(netWorth))} naira
                             </CInertiaLink>
                         </HStack>
                     </HStack>

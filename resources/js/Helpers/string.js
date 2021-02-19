@@ -1,3 +1,28 @@
+export function roundNum(x) {
+    if (isNaN(x)) return x;
+
+    if (x < 9999) {
+        return x;
+    }
+
+    if (x < 1000000) {
+        return Math.round(x / 1000) + "000";
+    }
+    if (x < 10000000) {
+        return (x / 1000000).toFixed(2) + "000000";
+    }
+
+    if (x < 1000000000) {
+        return Math.round(x / 1000000) + "000000";
+    }
+
+    if (x < 1000000000000) {
+        return Math.round(x / 1000000000) + "000000000";
+    }
+
+    return "1000000000000+";
+}
+
 // System for American Numbering
 var th_val = ["", "thousand", "million", "billion", "trillion"];
 // System for uncomment this line for Number of English
@@ -40,6 +65,8 @@ var tw_val = [
 export function toWords(s) {
     s = s.toString();
     s = s.replace(/[\, ]/g, "");
+    var plus = s.indexOf("+") !== -1;
+    s = s.replace("+", "");
     if (s != parseFloat(s)) return "not a number ";
     var x_val = s.indexOf(".");
     if (x_val == -1) x_val = s.length;
@@ -73,7 +100,9 @@ export function toWords(s) {
         for (var i = x_val + 1; i < y_val; i++)
             str_val += dg_val[n_val[i]] + " ";
     }
-    return str_val.replace(/\s+/g, " ");
+    var res = str_val.replace(/\s+/g, " ");
+    if (plus) res += "plus";
+    return res;
 }
 
 export function parseAmount(amount) {

@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
             'user' => fn () => $request->user()
                 ? $request->user()->only('id', 'name', 'email')
                 : null,
-            'netWorth' => fn () => authUser()->accounts()->with('wallet')->get()->sum('balance'),
+            'netWorth' => fn () => authUser()?->accounts()->with('wallet')->get()->sum('balance'),
         ]);
     }
 }

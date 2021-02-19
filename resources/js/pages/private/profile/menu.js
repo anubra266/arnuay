@@ -77,12 +77,15 @@ export const SubMenu = (props) => {
         borderBottom: "solid 1px",
         borderBottomColor: mode("gray.200", "gray.800"),
     };
+    const hoverStyle = { bg: mode("gray.200", "gray.800") };
     return (
         <Menu
             w="full"
             shadow="none"
             rounded="none"
-            _hover={{ bg: mode("gray.200", "gray.800") }}
+            _hover={hoverStyle}
+            _focusWithin={hoverStyle}
+            transition="all 0.5s ease-in-out"
             submenu={props.arrow ? "1" : null}
             {...(!(props.last === "1") && borderStyle)}
             {...props}

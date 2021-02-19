@@ -2,8 +2,8 @@ import React, { createRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
-import { SubMenu, MenuIcon } from "../menu";
-import { CgPassword } from "react-icons/cg";
+import ResetPassword from "./reset-password";
+import TwoFactorAuth from "./2fa";
 const header = createRef();
 
 const Security = () => {
@@ -29,17 +29,8 @@ const Security = () => {
                     Security
                 </Text>
                 <Flex justify="center" direction="column">
-                    <SubMenu
-                        title="Two-factor authentication"
-                        description="Disabled"
-                        name="2 F A"
-                    />
-                    <SubMenu
-                        title="Password"
-                        description="Last updated on 27 Jun 2018"
-                        icon={<MenuIcon as={CgPassword} />}
-                        last="1"
-                    />
+                    <TwoFactorAuth />
+                    <ResetPassword />
                 </Flex>
             </Box>
         </>

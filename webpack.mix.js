@@ -6,11 +6,21 @@ mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .webpackConfig({
         output: { chunkFilename: "js/[name].js?id=[chunkhash]" },
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    loader: "ts-loader",
+                    exclude: /node_modules/,
+                },
+            ],
+        },
         resolve: {
             alias: {
                 "~": path.resolve("resources/js"),
                 "@": path.resolve("resources/js/components"),
             },
+            extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],
         },
     })
     .version()

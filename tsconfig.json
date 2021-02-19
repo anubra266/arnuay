@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "commonjs",
+        "target": "es5",
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "sourceMap": false,
+        "paths": {
+            "~/*": ["./resources/js/*"],
+            "@/*": ["./resources/js/components/*"]
+        }
+    },
+    "include": ["resources/js/**/*"],
+    "exclude": ["node_modules", "public/js"]
+}
