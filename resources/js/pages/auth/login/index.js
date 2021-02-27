@@ -15,19 +15,12 @@ import Layout from "../layout";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BottomLink } from "~/components/auth";
 import Formy from "@/app/formy";
-import { signin } from "~/actions/auth/login";
+
 const Login = () => {
     const [show, setShow] = useState(false);
-    const [errors, setErrors] = useState();
-    const [loading, setLoading] = useState(false);
 
-    const handleLogin = (values, setValue) => {
-        signin(values, setLoading)
-            .then((m) => console.log("m", m))
-            .catch((errs) => {
-                setErrors(errs);
-                setValue("password", "");
-            });
+    const handleLogin = ({ post, data }) => {
+        post(route("login", data));
     };
     return (
         <>
@@ -42,7 +35,10 @@ const Login = () => {
                 }}
                 onSubmit={handleLogin}
             >
-                {({ email, password, remember }, { setValue }) => (
+                {(
+                    { email, password, remember },
+                    { setData, processing, errors }
+                ) => (
                     <Stack>
                         <FormControl id="email" isRequired>
                             <FormLabel fontSize="sm" fontWeight="bold">
@@ -86,7 +82,7 @@ const Login = () => {
                                 colorScheme="brand"
                                 isChecked={remember.value}
                                 onChange={(e) =>
-                                    setValue("remember", e.target.checked)
+                                    setData("remember", e.target.checked)
                                 }
                             >
                                 Remember me
@@ -98,7 +94,7 @@ const Login = () => {
                         <Button
                             type="submit"
                             colorScheme="brand"
-                            isLoading={loading}
+                            isLoading={processing}
                             shadow="lg"
                         >
                             Login

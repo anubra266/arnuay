@@ -13,7 +13,7 @@ const Security = () => {
             <Box
                 w={520}
                 p={10}
-                bg={mode("white", "gray.700")}
+                layerStyle="card"
                 shadow="base"
                 rounded="md"
                 zIndex={1}

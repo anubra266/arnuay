@@ -20,6 +20,6 @@ class AccountService
     public function store($request)
     {
         $account = $request->validated();
-        authUser()->accounts()->create($account);
+        return authUser()->accounts()->create($account);
     }
 }

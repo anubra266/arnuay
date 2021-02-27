@@ -13,8 +13,8 @@ import { parseAmount } from "~/Helpers/string";
 export const Account = (props) => {
     return (
         <Box
-            bg={mode("white", "gray.700")}
-            _hover={{ bg: mode("gray.200", "gray.800") }}
+            layerStyle="card"
+            _hover={{ bg: mode("gray.300", "gray.800") }}
             shadow="md"
             rounded="md"
             p={3}

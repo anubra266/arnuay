@@ -7,7 +7,7 @@ const TwoFactorAuth = () => {
             <SubMenu
                 title="Two-factor authentication"
                 description="Disabled"
-                name="2 F A" 
+                name="2 F A"
             />
         </>
     );

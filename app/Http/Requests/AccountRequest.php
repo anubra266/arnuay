@@ -26,7 +26,7 @@ class AccountRequest extends FormRequest
         return [
             'name' => 'required',
             'bank' => 'required',
-            'account_number' => 'required|numeric',
+            'account_number' => 'required|string|size:10',
         ];
     }
 

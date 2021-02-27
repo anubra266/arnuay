@@ -37,4 +37,25 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $exception)
+    {
+        $response = parent::render($request, $exception);
+
+        if ($response->status() === 419) {
+            return back()->with([
+                'warning' => 'The page expired, please try again.',
+            ]);
+        }
+        return $response;
+    }
 }

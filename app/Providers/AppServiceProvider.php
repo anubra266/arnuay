@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         require_once app_path('Helpers/AuthUser.php');
         require_once app_path('Helpers/HashId.php');
+        require_once app_path('Helpers/ValidationError.php');
     }
 
     /**

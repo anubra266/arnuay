@@ -11,7 +11,7 @@ const Home = () => {
             <Box
                 w={500}
                 p={5}
-                bg={mode("white", "gray.700")}
+                layerStyle="card"
                 shadow="md"
                 rounded="md"
                 zIndex={1}

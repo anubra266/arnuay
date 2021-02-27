@@ -163,6 +163,7 @@ export default function Navbar() {
                                 letterSpacing="widest"
                                 fontSize="3xl"
                                 _hover={{ color: "white" }}
+                                title="Logo"
                             >
                                 Arnuay
                                 <VisuallyHidden>Arnuay</VisuallyHidden>
@@ -174,8 +175,9 @@ export default function Navbar() {
                                 _hover={{ opacity: 1, color: "white" }}
                                 transition="opacity 0.1s ease-in-out"
                                 textTransform="capitalize"
+                                title="Networth"
                             >
-                                {toWords(roundNum(netWorth))} naira
+                                {toWords(roundNum(netWorth))} naira 
                             </CInertiaLink>
                         </HStack>
                     </HStack>

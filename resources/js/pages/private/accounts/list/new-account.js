@@ -25,7 +25,6 @@ import {
 } from "@chakra-ui/react";
 import Formy from "@/app/formy";
 import { CFormLabel } from "~/components/auth";
-import { createAccount } from "~/actions/accounts/create-account";
 const NewAccount = () => {
     const newAccount = useDisclosure();
     return (
@@ -53,11 +52,9 @@ const NewAccount = () => {
 export default NewAccount;
 
 const AccountForm = ({ isOpen, onClose }) => {
-    const [errors, setErrors] = useState();
-    const [loading, setLoading] = useState(false);
-
-    const handleCreateAccount = (values, resetFields) => {
-        createAccount(values, setLoading, setErrors).then(() => resetFields());
+    const handleCreateAccount = ({ post, data, reset, clearErrors }) => {
+        post(route("accounts.create"), data).then(() => reset());
+        clearErrors();
     };
     return (
         <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="sm">
@@ -71,7 +68,10 @@ const AccountForm = ({ isOpen, onClose }) => {
                         }}
                         onSubmit={handleCreateAccount}
                     >
-                        {({ name, bank, account_number }, { setValue }) => (
+                        {(
+                            { name, bank, account_number },
+                            { setData, errors, processing }
+                        ) => (
                             <>
                                 <DrawerHeader borderBottomWidth="1px">
                                     Create a new account
@@ -142,7 +142,7 @@ const AccountForm = ({ isOpen, onClose }) => {
                                                     focusBorderColor="brand.400"
                                                     {...account_number}
                                                     onChange={(val) =>
-                                                        setValue(
+                                                        setData(
                                                             "account_number",
                                                             val
                                                         )
@@ -173,7 +173,7 @@ const AccountForm = ({ isOpen, onClose }) => {
                                         Cancel
                                     </Button>
                                     <Button
-                                        isLoading={loading}
+                                        isLoading={processing}
                                         colorScheme="brand"
                                         type="submit"
                                     >

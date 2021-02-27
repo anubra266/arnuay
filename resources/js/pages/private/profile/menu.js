@@ -13,7 +13,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 export const Menu = (props) => {
     return (
         <Box
-            bg={mode("white", "gray.700")}
+            layerStyle="card"
             shadow="md"
             rounded="md"
             zIndex={1}

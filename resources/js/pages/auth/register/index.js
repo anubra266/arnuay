@@ -1,4 +1,4 @@
-import React, { useState  } from "react";
+import React, { useState } from "react";
 import {
     Text,
     FormControl,
@@ -14,20 +14,13 @@ import Layout from "../layout";
 import { CFormLabel, PasswordVisibility, BottomLink } from "~/components/auth";
 import Formy from "@/app/formy";
 import PasswordStrength from "~/components/auth/password-strength";
-import { signup } from "~/actions/auth/register";
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
-    const [errors, setErrors] = useState();
-    const [loading, setLoading] = useState(false);
 
-    const handleRegister = (values) => {
-        signup(values, setLoading)
-            .then((m) => console.log("m", m))
-            .catch((errs) => {
-                setErrors(errs);
-            });
+    const handleRegister = ({ post, data }) => {
+        post(route("register", data));
     };
     return (
         <>
@@ -43,7 +36,10 @@ const Register = () => {
                 }}
                 onSubmit={handleRegister}
             >
-                {({ username, email, password, password_confirmation }) => (
+                {(
+                    { username, email, password, password_confirmation },
+                    { processing, errors }
+                ) => (
                     <Stack spacing={4}>
                         <FormControl
                             id="username"
@@ -151,7 +147,7 @@ const Register = () => {
                         <Button
                             type="submit"
                             colorScheme="brand"
-                            isLoading={loading}
+                            isLoading={processing}
                             shadow="lg"
                         >
                             Register
