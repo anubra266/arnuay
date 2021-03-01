@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { usePage } from "@inertiajs/inertia-react";
-import { useToast } from "@chakra-ui/react";
+import { createStandaloneToast } from "@chakra-ui/react";
 
 export const useFlashMessage = () => {
     const { flash } = usePage().props;
-    const toast = useToast();
+    const toast = createStandaloneToast();
 
     const display = ([title, body], status) => {
         toast({

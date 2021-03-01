@@ -19,8 +19,8 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
-    const handleRegister = ({ post, data }) => {
-        post(route("register", data));
+    const handleRegister = ({ post }) => {
+        post(route("register", { preserveScroll: true }));
     };
     return (
         <>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Account } from "./";
+import React from "react";
+import { Account } from "./index";
 import { IoMdAddCircle } from "react-icons/io";
 import {
     Box,
@@ -17,14 +17,11 @@ import {
     FormErrorMessage,
     FormHelperText,
     Input,
-    Select,
     Button,
-    PinInput,
-    PinInputField,
-    HStack,
 } from "@chakra-ui/react";
 import Formy from "@/app/formy";
 import { CFormLabel } from "~/components/auth";
+
 const NewAccount = () => {
     const newAccount = useDisclosure();
     return (
@@ -52,9 +49,13 @@ const NewAccount = () => {
 export default NewAccount;
 
 const AccountForm = ({ isOpen, onClose }) => {
-    const handleCreateAccount = ({ post, data, reset, clearErrors }) => {
-        post(route("accounts.create"), data).then(() => reset());
-        clearErrors();
+    const handleCreateAccount = (form) => {
+        form.post(route("accounts.create"), {
+            preserveScroll: true,
+            onSuccess: () => {
+                form.resetFields();
+            },
+        });
     };
     return (
         <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="sm">
@@ -63,15 +64,10 @@ const AccountForm = ({ isOpen, onClose }) => {
                     <Formy
                         initialValues={{
                             name: "",
-                            bank: "",
-                            account_number: "",
                         }}
                         onSubmit={handleCreateAccount}
                     >
-                        {(
-                            { name, bank, account_number },
-                            { setData, errors, processing }
-                        ) => (
+                        {({ name }, { errors, processing, touched }) => (
                             <>
                                 <DrawerHeader borderBottomWidth="1px">
                                     Create a new account
@@ -80,12 +76,13 @@ const AccountForm = ({ isOpen, onClose }) => {
                                     <Stack spacing="24px">
                                         <FormControl
                                             id="name"
-                                            isRequired
-                                            isInvalid={errors?.name}
+                                            isInvalid={
+                                                errors.name && touched.name
+                                            }
                                         >
                                             <CFormLabel>Name</CFormLabel>
                                             <FormErrorMessage>
-                                                {errors?.name}
+                                                {errors.name}
                                             </FormErrorMessage>
                                             <Input
                                                 type="text"
@@ -98,76 +95,13 @@ const AccountForm = ({ isOpen, onClose }) => {
                                                 Enter Account Name
                                             </FormHelperText>
                                         </FormControl>
-
-                                        <FormControl
-                                            id="bank"
-                                            isRequired
-                                            isInvalid={errors?.bank}
-                                        >
-                                            <CFormLabel>
-                                                Bank Name (For payouts)
-                                            </CFormLabel>
-                                            <FormErrorMessage>
-                                                {errors?.bank}
-                                            </FormErrorMessage>
-                                            <Select
-                                                id="bank"
-                                                placeholder="Select Bank"
-                                                onChange={bank.onChange}
-                                            >
-                                                <option value="ac">
-                                                    Access Bank
-                                                </option>
-                                                <option value="gt">
-                                                    GT Bank
-                                                </option>
-                                            </Select>
-                                            <FormHelperText>
-                                                Enter Account Bank
-                                            </FormHelperText>
-                                        </FormControl>
-                                        <FormControl
-                                            id="account_number"
-                                            isRequired
-                                            isInvalid={errors?.account_number}
-                                        >
-                                            <CFormLabel>
-                                                Bank Account Number
-                                            </CFormLabel>
-                                            <FormErrorMessage>
-                                                {errors?.account_number}
-                                            </FormErrorMessage>
-                                            <HStack>
-                                                <PinInput
-                                                    focusBorderColor="brand.400"
-                                                    {...account_number}
-                                                    onChange={(val) =>
-                                                        setData(
-                                                            "account_number",
-                                                            val
-                                                        )
-                                                    }
-                                                >
-                                                    {Array.from(
-                                                        { length: 10 },
-                                                        (_, k) => (
-                                                            <PinInputField
-                                                                key={k}
-                                                            />
-                                                        )
-                                                    )}
-                                                </PinInput>
-                                            </HStack>
-                                            <FormHelperText>
-                                                Enter Bank Account Number
-                                            </FormHelperText>
-                                        </FormControl>
                                     </Stack>
                                 </DrawerBody>
                                 <DrawerFooter borderTopWidth="1px">
                                     <Button
                                         variant="outline"
                                         mr={3}
+                                        isLoading={processing}
                                         onClick={onClose}
                                     >
                                         Cancel

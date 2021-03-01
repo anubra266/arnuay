@@ -19,8 +19,8 @@ import Formy from "@/app/formy";
 const Login = () => {
     const [show, setShow] = useState(false);
 
-    const handleLogin = ({ post, data }) => {
-        post(route("login", data));
+    const handleLogin = ({ post }) => {
+        post(route("login", { preserveScroll: true }));
     };
     return (
         <>
@@ -35,10 +35,7 @@ const Login = () => {
                 }}
                 onSubmit={handleLogin}
             >
-                {(
-                    { email, password, remember },
-                    { setData, processing, errors }
-                ) => (
+                {({ email, password, remember }, { processing, errors }) => (
                     <Stack>
                         <FormControl id="email" isRequired>
                             <FormLabel fontSize="sm" fontWeight="bold">
@@ -81,9 +78,7 @@ const Login = () => {
                                 defaultChecked
                                 colorScheme="brand"
                                 isChecked={remember.value}
-                                onChange={(e) =>
-                                    setData("remember", e.target.checked)
-                                }
+                                {...remember}
                             >
                                 Remember me
                             </Checkbox>

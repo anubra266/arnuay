@@ -11,6 +11,7 @@ const InlineSubMenu = (props) => {
             placeholder={`Enter ${props.field}`}
             colorScheme="brand"
             isDisabled={props.isDisabled}
+            onChange={props.onChange}
             onSubmit={props.onSubmit}
         >
             <EditablePreview ref={ref} />

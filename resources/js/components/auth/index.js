@@ -1,6 +1,7 @@
+import React from "react";
 import { FormLabel, InputRightElement, IconButton } from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import CInertiaLink from "@/app/chakra-inertia-link";
+import CInertiaLink from "~/components/app/chakra-inertia-link";
 
 export const CFormLabel = (props) => {
     return <FormLabel fontSize="sm" fontWeight="bold" {...props} />;
@@ -10,6 +11,7 @@ export const PasswordVisibility = (props) => {
     return (
         <InputRightElement width="4.5rem">
             <IconButton
+                aria-label="Toggle Password"
                 variant="ghost"
                 size="sm"
                 colorScheme="brand"

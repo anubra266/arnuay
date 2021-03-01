@@ -2,11 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Account;
-use App\Models\User;
-use App\Observers\AccountObserver;
-use App\Observers\UserObserver;
+use App\Observers\WalletObserver;
 use Illuminate\Support\ServiceProvider;
+use Bavix\Wallet\Models\Wallet;
 
 class ArnuayProvider extends ServiceProvider
 {
@@ -27,7 +25,7 @@ class ArnuayProvider extends ServiceProvider
      */
     public function boot()
     {
-        User::observe(UserObserver::class);
-        Account::observe(AccountObserver::class);
+
+        Wallet::observe(WalletObserver::class);
     }
 }

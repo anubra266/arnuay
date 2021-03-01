@@ -1,4 +1,3 @@
-import React from "react";
 import {
     Box,
     SimpleGrid,
@@ -49,14 +48,14 @@ const Accounts = ({ accounts }) => {
     return (
         <>
             <SimpleGrid columns={[1, null, 2]} spacing={5} mt={10}>
+                <NewAccount />
                 {accounts.map((acc, acid) => (
                     <Account
                         key={acid}
                         name={acc.name}
-                        description={`NGN ${parseAmount(acc.wallet.balance)}`}
+                        description={`NGN ${parseAmount(acc.balance)}`}
                     />
                 ))}
-                <NewAccount />
             </SimpleGrid>
         </>
     );

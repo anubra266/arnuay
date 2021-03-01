@@ -25,8 +25,6 @@ class AccountRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'bank' => 'required',
-            'account_number' => 'required|string|size:10',
         ];
     }
 
@@ -39,9 +37,6 @@ class AccountRequest extends FormRequest
     {
         return [
             'name.required' => 'Account\'s Name is required.',
-            'bank.required' => 'You must Select a Bank',
-            'account_number.required' => 'Bank Account number is required',
-            'account_number.required' => 'Account Number can only have Numbers',
         ];
     }
 }

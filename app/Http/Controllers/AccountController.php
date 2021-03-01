@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Services\AccountService;
 use App\Http\Requests\AccountRequest;
 

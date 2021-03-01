@@ -64,6 +64,7 @@ const Action = (props) => {
                 placement="bottom"
                 onClose={action.onClose}
                 isOpen={action.isOpen}
+                motionPreset="slideInBottom"
             >
                 <DrawerOverlay>
                     <DrawerContent
@@ -92,10 +93,16 @@ const Action = (props) => {
                                             key={acid}
                                             name={acc.name}
                                             description={`NGN ${parseAmount(
-                                                acc.wallet.balance
+                                                acc.balance
                                             )}`}
                                         />
                                     ))}
+                                    {accounts.length === 0 && (
+                                        <Account
+                                            name="No accounts"
+                                            description="Create an account first"
+                                        />
+                                    )}
                                 </SimpleGrid>
                             </DrawerBody>
                         </Box>

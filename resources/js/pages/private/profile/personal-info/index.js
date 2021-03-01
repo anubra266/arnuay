@@ -1,8 +1,9 @@
-import React, { createRef, forwardRef } from "react";
+import React, { createRef } from "react";
 import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
 import Name from "./name";
+
 const header = createRef();
 
 const PersonalInfo = (props) => {

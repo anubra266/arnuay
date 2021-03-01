@@ -15,10 +15,9 @@ import {
     Tooltip,
 } from "@chakra-ui/react";
 
-import { AiOutlineMenu, AiFillBell } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import ThemeSwitch from "@/app/theme-toggle";
-import Logo from "@/app/logo";
 import { routes } from "./routes";
 
 import { LayoutContext } from "./context";
@@ -177,7 +176,7 @@ export default function Navbar() {
                                 textTransform="capitalize"
                                 title="Networth"
                             >
-                                {toWords(roundNum(netWorth))} naira 
+                                {toWords(roundNum(netWorth)) || "0.00"} naira
                             </CInertiaLink>
                         </HStack>
                     </HStack>
