@@ -28,3 +28,12 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
           script: cd /var/www/html/arnuay.anubra.tech && composer install && php artisan migrate && yarn && yarn prod && php artisan config:cache
+
+      - name: Permission issues
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PORT: ${{ secrets.PORT }}
+          KEY: ${{ secrets.SSHKEY }}
+          script: cd /var/www/html/arnuay.anubra.tech && chmod 775 storage/framework/cache && chmod 775 storage/framework/cache/data && chgrp www-data storage/framework/cache && chgrp www-data storage/framework/cache/data
