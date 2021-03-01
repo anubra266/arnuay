@@ -27,4 +27,4 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: cd /var/www/html/arnuay.anubra.tech && yarn prod
+          script: cd /var/www/html/arnuay.anubra.tech && composer install && pam && yarn && yarn prod
