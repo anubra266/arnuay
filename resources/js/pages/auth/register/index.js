@@ -65,6 +65,7 @@ const Register = () => {
                             id="email"
                             isRequired
                             isInvalid={errors?.email}
+                            autoFocus
                         >
                             <CFormLabel>Email</CFormLabel>
                             <FormErrorMessage>{errors?.email}</FormErrorMessage>
@@ -72,7 +73,6 @@ const Register = () => {
                                 type=""
                                 placeholder="Enter your email"
                                 focusBorderColor="brand.400"
-                                autoFocus
                                 {...email}
                             />
                             <FormHelperText>

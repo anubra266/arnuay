@@ -1,5 +1,11 @@
 import React from "react";
-import { chakra, Box, useColorModeValue as mode, Icon, Image } from "@chakra-ui/react";
+import {
+    chakra,
+    Box,
+    useColorModeValue as mode,
+    Icon,
+    Image,
+} from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
 
 const InfoHero = (props) => {
@@ -59,10 +65,7 @@ const InfoHero = (props) => {
                                 </chakra.span>
                                 <chakra.span
                                     display={{ base: "block", xl: "inline" }}
-                                    color={mode(
-                                        "brand.600",
-                                        "brand.400"
-                                    )}
+                                    color={mode("brand.600", "brand.400")}
                                 >
                                     financial services
                                 </chakra.span>
@@ -139,7 +142,7 @@ const InfoHero = (props) => {
                     fit="cover"
                     src={props.image}
                     alt={props.label}
-                    loading="lazy"
+                    loading="lazy" border="solid 1px red"
                 />
             </Box>
         </Box>

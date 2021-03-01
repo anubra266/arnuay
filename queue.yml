@@ -1,0 +1,20 @@
+apps:
+  - name: queue
+    script: artisan
+    exec_mode: fork
+    interpreter: php
+    instances: 3
+    args:
+      - queue:work
+      - --tries=5
+      - --sleep=1
+  - name: queue
+    script: artisan
+    exec_mode: fork
+    interpreter: php
+    instances: 1
+    args:
+      - queue:work
+      - --queue=auth
+      - --tries=5
+      - --sleep=1
