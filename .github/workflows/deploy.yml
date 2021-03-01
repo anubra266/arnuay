@@ -36,4 +36,4 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-          script: cd /var/www/html/arnuay.anubra.tech && chmod 775 storage/framework/cache && chmod 775 storage/framework/cache/data && chgrp www-data storage/framework/cache && chgrp www-data storage/framework/cache/data
+          script: cd /var/www/html/arnuay.anubra.tech && chmod 775 -R storage && chgrp www-data -R storage
