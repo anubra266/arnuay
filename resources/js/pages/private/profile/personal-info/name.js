@@ -4,6 +4,7 @@ import { MdCheck, MdContacts } from "react-icons/md";
 import { Text } from "@chakra-ui/layout";
 import Icon from "@chakra-ui/icon";
 import { useForm } from "@inertiajs/inertia-react";
+import { SlideFade } from "@chakra-ui/transition";
 
 const Name = ({ info }) => {
     const { errors, processing, recentlySuccessful, post, setData } = useForm({
@@ -30,12 +31,17 @@ const Name = ({ info }) => {
             <Text fontSize="sm" color="red.400" mx="auto">
                 {errors.name}
             </Text>
-            {recentlySuccessful && (
-                <Text fontSize="sm" color="green.400" mx="auto">
+            <SlideFade in={recentlySuccessful} direction="bottom">
+                <Text
+                    fontSize="sm"
+                    color="green.400"
+                    textAlign="center"
+                    fontWeight="bold"
+                >
                     <Icon as={MdCheck} fontWeight="bold" fontSize="md" />{" "}
                     Updated successfully
                 </Text>
-            )}
+            </SlideFade>
         </>
     );
 };

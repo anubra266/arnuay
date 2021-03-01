@@ -134,7 +134,7 @@ const InfoHero = (props) => {
                 top={{ lg: 0 }}
                 bottom={{ lg: 0 }}
                 right={{ lg: 0 }}
-                w={{ lg: 1 / 2 }}
+                w={{ lg: "50%" }}
             >
                 <Image
                     h={[56, 72, 96, "full"]}
@@ -142,7 +142,7 @@ const InfoHero = (props) => {
                     fit="cover"
                     src={props.image}
                     alt={props.label}
-                    loading="lazy" border="solid 1px red"
+                    loading="lazy"
                 />
             </Box>
         </Box>

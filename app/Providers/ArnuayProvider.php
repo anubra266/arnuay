@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Observers\WalletObserver;
 use Illuminate\Support\ServiceProvider;
-use Bavix\Wallet\Models\Wallet;
 
 class ArnuayProvider extends ServiceProvider
 {
@@ -25,7 +23,6 @@ class ArnuayProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        Wallet::observe(WalletObserver::class);
+        //
     }
 }

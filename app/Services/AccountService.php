@@ -15,6 +15,10 @@ class AccountService
     public function store($request)
     {
         $account = $request->validated();
+        $existingAccounts = authUser()->wallets()->whereName($request->name)->count();
+        if ($existingAccounts) {
+            vError(['name' => "You already have an account named $request->name"]);
+        }
         authUser()->createWallet($account);
     }
 }
