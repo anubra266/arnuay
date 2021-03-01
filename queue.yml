@@ -8,7 +8,7 @@ apps:
       - queue:work
       - --tries=5
       - --sleep=1
-  - name: queue
+  - name: queue-auth
     script: artisan
     exec_mode: fork
     interpreter: php
