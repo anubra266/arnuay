@@ -5,7 +5,7 @@ import layerStyles from "./foundations/layerStyles";
 
 const config = {
     useSystemColorMode: false,
-    initialColorMode: "dark",
+    initialColorMode: "light",
 };
 
 const overrides = {
