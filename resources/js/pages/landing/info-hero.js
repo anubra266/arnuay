@@ -88,7 +88,7 @@ const InfoHero = (props) => {
                                 mt={{ base: 5, sm: 8 }}
                                 display={{ sm: "flex" }}
                                 justifyContent={{ sm: "center", lg: "start" }}
-                                fontWeight="extrabold"
+                                fontWeight="600"
                                 fontFamily="body"
                             >
                                 <Box rounded="full" shadow="md">
