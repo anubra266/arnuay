@@ -32,7 +32,7 @@ export const Account = (props) => {
                         {props.name || props.title}
                     </Text>
                     <Text
-                        fontWeight="bold"
+                        fontWeight="normal"
                         color={mode("gray.600")}
                         textTransform="capitalize"
                         fontSize="xs"

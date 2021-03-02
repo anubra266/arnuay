@@ -55,7 +55,7 @@ const InfoHero = (props) => {
                                 fontSize={{ base: "4xl", sm: "5xl", md: "6xl" }}
                                 letterSpacing="tight"
                                 lineHeight="short"
-                                fontWeight="extrabold"
+                                fontWeight="bold"
                                 color={mode("gray.900", "white")}
                                 fontFamily="heading"
                             >
@@ -77,7 +77,7 @@ const InfoHero = (props) => {
                                 maxW={{ sm: "xl" }}
                                 mx={{ sm: "auto", lg: 0 }}
                                 color={mode("gray.700", "gray.500")}
-                                fontFamily="landing"
+                                fontFamily="body"
                                 fontWeight="medium"
                             >
                                 Giving you the freedom to make quick and easy
@@ -89,7 +89,7 @@ const InfoHero = (props) => {
                                 display={{ sm: "flex" }}
                                 justifyContent={{ sm: "center", lg: "start" }}
                                 fontWeight="extrabold"
-                                fontFamily="landing"
+                                fontFamily="body"
                             >
                                 <Box rounded="full" shadow="md">
                                     <CInertiaLink
