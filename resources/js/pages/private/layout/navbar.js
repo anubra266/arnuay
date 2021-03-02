@@ -44,30 +44,25 @@ const NavLink = (props) => {
             pointerEvents={props.active && "none"}
             {...(props.active && activeStyle)}
             _hover={activeStyle}
+            fontFamily="body"
             {...fDOMProps}
         />
     );
 };
 const Logout = () => {
     return (
-        <Tooltip
-            shouldWrapChildren
-            hasArrow
-            label="Logout"
-            placement="bottom-start"
+        <NavLink
+            as={IconButton}
+            href={route("logout")}
+            method="post"
+            color="gray.50"
+            fontSize="sm"
+            icon={<FaPowerOff />}
+            isRound
+            title="Logout"
         >
-            <NavLink
-                as={IconButton}
-                href={route("logout")}
-                method="post"
-                color="gray.50"
-                fontSize="sm"
-                icon={<FaPowerOff />}
-                isRound
-            >
-                Logout
-            </NavLink>
-        </Tooltip>
+            Logout
+        </NavLink>
     );
 };
 const Routes = (props) => {

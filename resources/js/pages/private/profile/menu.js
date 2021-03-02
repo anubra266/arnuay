@@ -18,9 +18,9 @@ export const Menu = (props) => {
             rounded="md"
             zIndex={1}
             alignSelf="center"
-            maxW="90%"
-            p={4}
             w={500}
+            maxW="98%"
+            p={4}
             cursor="pointer"
             {...props}
         >

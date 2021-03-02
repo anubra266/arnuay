@@ -12,6 +12,8 @@ import {
     useDisclosure,
     Box,
     SimpleGrid,
+    Slide,
+    SlideFade,
 } from "@chakra-ui/react";
 
 import { Account } from "../list";
@@ -64,7 +66,6 @@ const Action = (props) => {
                 placement="bottom"
                 onClose={action.onClose}
                 isOpen={action.isOpen}
-                motionPreset="slideInBottom"
             >
                 <DrawerOverlay>
                     <DrawerContent
@@ -72,40 +73,42 @@ const Action = (props) => {
                         bg="transparent"
                         shadow="none"
                     >
-                        <Box
-                            w={400}
-                            maxW="99%"
-                            pos="absolute"
-                            left="50%"
-                            bottom={0}
-                            transform="translateX(-50%)"
-                            shadow="md"
-                            roundedTop="md"
-                            bg={mode("gray.50", "gray.900")}
-                        >
-                            <DrawerHeader borderBottomWidth="1px">
-                                {parseAction()}
-                            </DrawerHeader>
-                            <DrawerBody>
-                                <SimpleGrid columns={1} spacing={2} mt={2}>
-                                    {accounts.map((acc, acid) => (
-                                        <Account
-                                            key={acid}
-                                            name={acc.name}
-                                            description={`NGN ${parseAmount(
-                                                acc.balance
-                                            )}`}
-                                        />
-                                    ))}
-                                    {accounts.length === 0 && (
-                                        <Account
-                                            name="No accounts"
-                                            description="Create an account first"
-                                        />
-                                    )}
-                                </SimpleGrid>
-                            </DrawerBody>
-                        </Box>
+                        <SlideFade in={action.isOpen} offsetY="560px">
+                            <Box
+                                w={400}
+                                maxW="99%"
+                                pos="absolute"
+                                left="50%"
+                                bottom={0}
+                                transform="translateX(-50%)"
+                                shadow="md"
+                                roundedTop="md"
+                                bg={mode("gray.50", "gray.900")}
+                            >
+                                <DrawerHeader borderBottomWidth="1px">
+                                    {parseAction()}
+                                </DrawerHeader>
+                                <DrawerBody>
+                                    <SimpleGrid columns={1} spacing={2} mt={2}>
+                                        {accounts.map((acc, acid) => (
+                                            <Account
+                                                key={acid}
+                                                name={acc.name}
+                                                description={`NGN ${parseAmount(
+                                                    acc.balance
+                                                )}`}
+                                            />
+                                        ))}
+                                        {accounts.length === 0 && (
+                                            <Account
+                                                name="No accounts"
+                                                description="Create an account first"
+                                            />
+                                        )}
+                                    </SimpleGrid>
+                                </DrawerBody>
+                            </Box>
+                        </SlideFade>
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>

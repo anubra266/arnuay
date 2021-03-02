@@ -9,7 +9,7 @@ import {
 import CInertiaLink from "@/app/chakra-inertia-link";
 
 const InfoHero = (props) => {
-    const bg = mode("gray.50", "gray.900");
+    const bg = mode("gray.200", "gray.900");
     return (
         <Box pos="relative" overflow="hidden" bg={bg} mt={10}>
             <Box maxW="7xl" mx="auto">
@@ -85,6 +85,8 @@ const InfoHero = (props) => {
                                 mt={{ base: 5, sm: 8 }}
                                 display={{ sm: "flex" }}
                                 justifyContent={{ sm: "center", lg: "start" }}
+                                fontWeight="extrabold"
+                                fontFamily="fantasy"
                             >
                                 <Box rounded="full" shadow="md">
                                     <CInertiaLink

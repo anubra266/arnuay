@@ -7,17 +7,18 @@ import {
     Icon,
     useColorModeValue as mode,
     useDisclosure,
-    Drawer,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerHeader,
-    DrawerBody,
-    DrawerFooter,
     FormControl,
     FormErrorMessage,
     FormHelperText,
     Input,
     Button,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
 } from "@chakra-ui/react";
 import Formy from "@/app/formy";
 import { CFormLabel } from "~/components/auth";
@@ -58,67 +59,70 @@ const AccountForm = ({ isOpen, onClose }) => {
         });
     };
     return (
-        <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="sm">
-            <DrawerOverlay>
-                <DrawerContent>
-                    <Formy
-                        initialValues={{
-                            name: "",
-                        }}
-                        onSubmit={handleCreateAccount}
-                    >
-                        {({ name }, { errors, processing, touched }) => (
-                            <>
-                                <DrawerHeader borderBottomWidth="1px">
-                                    Create a new account
-                                </DrawerHeader>
-                                <DrawerBody>
-                                    <Stack spacing="24px">
-                                        <FormControl
-                                            id="name"
-                                            isInvalid={
-                                                errors.name && touched.name
-                                            }
-                                        >
-                                            <CFormLabel>Name</CFormLabel>
-                                            <FormErrorMessage>
-                                                {errors.name}
-                                            </FormErrorMessage>
-                                            <Input
-                                                type="text"
-                                                placeholder="Account name"
-                                                focusBorderColor="brand.400"
-                                                autoFocus
-                                                {...name}
-                                            />
-                                            <FormHelperText>
-                                                Enter Account Name
-                                            </FormHelperText>
-                                        </FormControl>
-                                    </Stack>
-                                </DrawerBody>
-                                <DrawerFooter borderTopWidth="1px">
-                                    <Button
-                                        variant="outline"
-                                        mr={3}
-                                        isLoading={processing}
-                                        onClick={onClose}
+        <Modal
+            onClose={onClose}
+            isOpen={isOpen}
+            isCentered
+            motionPreset="slideInBottom"
+        >
+            <ModalOverlay />
+            <ModalContent>
+                <Formy
+                    initialValues={{
+                        name: "",
+                    }}
+                    onSubmit={handleCreateAccount}
+                >
+                    {({ name }, { errors, processing, touched }) => (
+                        <>
+                            <ModalHeader borderBottomWidth="1px">
+                                Create a new account
+                            </ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody>
+                                <Stack spacing="24px">
+                                    <FormControl
+                                        id="name"
+                                        isInvalid={errors.name && touched.name}
                                     >
-                                        Cancel
-                                    </Button>
-                                    <Button
-                                        isLoading={processing}
-                                        colorScheme="brand"
-                                        type="submit"
-                                    >
-                                        Submit
-                                    </Button>
-                                </DrawerFooter>
-                            </>
-                        )}
-                    </Formy>
-                </DrawerContent>
-            </DrawerOverlay>
-        </Drawer>
+                                        <CFormLabel>Name</CFormLabel>
+                                        <FormErrorMessage>
+                                            {errors.name}
+                                        </FormErrorMessage>
+                                        <Input
+                                            type="text"
+                                            placeholder="Account name"
+                                            focusBorderColor="brand.400"
+                                            autoFocus
+                                            {...name}
+                                        />
+                                        <FormHelperText>
+                                            Enter Account Name
+                                        </FormHelperText>
+                                    </FormControl>
+                                </Stack>
+                            </ModalBody>
+                            <ModalFooter borderTopWidth="1px">
+                                <Button
+                                    variant="outline"
+                                    mr={3}
+                                    isLoading={processing}
+                                    onClick={onClose}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    isLoading={processing}
+                                    colorScheme="brand"
+                                    type="submit"
+                                >
+                                    Submit
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </Formy>
+            </ModalContent>
+        </Modal>
     );
 };

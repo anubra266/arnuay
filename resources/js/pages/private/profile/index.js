@@ -15,7 +15,7 @@ const Profile = () => {
     return (
         <>
             <Header portal={header} />
-            <Stack>
+            <Stack maxW="full">
                 <Menu
                     title="Security"
                     icon={<MenuIcon as={MdSecurity} />}

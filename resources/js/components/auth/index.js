@@ -1,5 +1,10 @@
 import React from "react";
-import { FormLabel, InputRightElement, IconButton } from "@chakra-ui/react";
+import {
+    FormLabel,
+    InputRightElement,
+    IconButton,
+    useColorModeValue as mode,
+} from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import CInertiaLink from "~/components/app/chakra-inertia-link";
 
@@ -27,7 +32,7 @@ export const BottomLink = (props) => (
     <CInertiaLink
         fontWeight="bold"
         color="brand.400"
-        _hover={{ color: "brand.700" }}
+        _hover={{ color: mode("brand.700", "brand.300") }}
         {...props}
     />
 );
