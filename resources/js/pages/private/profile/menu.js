@@ -46,7 +46,7 @@ export const Menu = (props) => {
                     </Box>
                     {props.description && (
                         <Box
-                            fontWeight="thin"
+                            fontWeight="medium"
                             textTransform="capitalize"
                             fontSize="sm"
                         >
