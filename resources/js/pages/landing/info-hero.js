@@ -57,6 +57,7 @@ const InfoHero = (props) => {
                                 lineHeight="short"
                                 fontWeight="extrabold"
                                 color={mode("gray.900", "white")}
+                                fontFamily="heading"
                             >
                                 <chakra.span
                                     display={{ base: "block", xl: "inline" }}
@@ -86,7 +87,7 @@ const InfoHero = (props) => {
                                 display={{ sm: "flex" }}
                                 justifyContent={{ sm: "center", lg: "start" }}
                                 fontWeight="extrabold"
-                                fontFamily="fantasy"
+                                fontFamily="body"
                             >
                                 <Box rounded="full" shadow="md">
                                     <CInertiaLink

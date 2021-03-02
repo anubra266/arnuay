@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { useProgressBar } from "@/app/progress-bar";
 import theme from "~/theme";
 import ErrorBoundary from "react-errbo";
-
+import Fonts from "~/theme/foundations/custom-fonts";
 import "../css/app.css";
 
 useProgressBar();
@@ -14,6 +14,7 @@ const el = document.getElementById("app");
 render(
     <ErrorBoundary>
         <ChakraProvider theme={theme}>
+            <Fonts />
             <App
                 initialPage={JSON.parse(el.dataset.page)}
                 resolveComponent={(name) =>
