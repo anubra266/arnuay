@@ -76,7 +76,9 @@ const InfoHero = (props) => {
                                 fontSize={{ sm: "lg", md: "xl" }}
                                 maxW={{ sm: "xl" }}
                                 mx={{ sm: "auto", lg: 0 }}
-                                color="gray.500"
+                                color={mode("gray.700", "gray.500")}
+                                fontFamily="body"
+                                fontWeight="medium"
                             >
                                 Giving you the freedom to make quick and easy
                                 payments, earn money, spend smart, and save
