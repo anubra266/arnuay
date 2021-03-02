@@ -18,9 +18,10 @@ import { useViewportScroll } from "framer-motion";
 import ThemeSwitch from "@/app/theme-toggle";
 import CInertiaLink from "@/app/chakra-inertia-link";
 import Logo from "@/app/logo";
+import { LandingContext } from "./";
 
 export default function Gslr() {
-    const bg = mode("gray.200", "gray.900");
+    const { bg } = React.useContext(LandingContext);
     const mobileNav = useDisclosure();
     const ref = React.useRef();
     const [y, setY] = React.useState(0);

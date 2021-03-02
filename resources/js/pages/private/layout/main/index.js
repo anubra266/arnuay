@@ -90,13 +90,19 @@ const Layout = ({ children, dhead, subpage }, header) => {
                         mt={5}
                         w={520}
                     >
-                        <HStack
-                            onClick={() => window.history.back()}
-                            cursor="pointer"
-                            mr="auto"
-                        >
-                            <Icon as={AiOutlineArrowLeft} />
-                            <Text textTransform="uppercase">Back</Text>
+                        <HStack mr="auto">
+                            <Icon
+                                cursor="pointer"
+                                onClick={() => window.history.back()}
+                                as={AiOutlineArrowLeft}
+                            />
+                            <Text
+                                cursor="pointer"
+                                onClick={() => window.history.back()}
+                                textTransform="uppercase"
+                            >
+                                Back
+                            </Text>
                         </HStack>
                     </Box>
                 )}

@@ -1,21 +1,32 @@
 import React from "react";
 import InlineSubMenu from "@/app/inline-submenu";
-import { MdCheck, MdContacts } from "react-icons/md";
+import { MdContacts } from "react-icons/md";
 import { Text } from "@chakra-ui/layout";
-import Icon from "@chakra-ui/icon";
 import { useForm } from "@inertiajs/inertia-react";
-import { SlideFade } from "@chakra-ui/transition";
+import toast from "react-hot-toast";
 
 const Name = ({ info }) => {
-    const { errors, processing, recentlySuccessful, post, setData } = useForm({
+    const { errors, processing, post, setData } = useForm({
         name: "",
     });
 
     const handleSubmit = (value) => {
-        info.name !== value &&
+        if (info.name !== value) {
+            const toastId = toast.loading(`Updating Name`);
             post(route("profile.pinfo.set", { field: "name" }), {
                 preserveScroll: true,
+                onSuccess: () => {
+                    toast.success(`Name updated Successfully`, {
+                        id: toastId,
+                    });
+                },
+                onError: () => {
+                    toast.error(`An error occured`, {
+                        id: toastId,
+                    });
+                },
             });
+        }
     };
     return (
         <>
@@ -31,17 +42,6 @@ const Name = ({ info }) => {
             <Text fontSize="sm" color="red.400" mx="auto">
                 {errors.name}
             </Text>
-            <SlideFade in={recentlySuccessful} direction="bottom">
-                <Text
-                    fontSize="sm"
-                    color="green.400"
-                    textAlign="center"
-                    fontWeight="bold"
-                >
-                    <Icon as={MdCheck} fontWeight="bold" fontSize="md" />{" "}
-                    Updated successfully
-                </Text>
-            </SlideFade>
         </>
     );
 };

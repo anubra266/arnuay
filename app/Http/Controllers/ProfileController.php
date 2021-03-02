@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
     public function updatePersonalInfo(PersonalInfo $request, $field)
     {
-        $field = $this->profileService->updatePersonalInfo($request, $field);
-        return back()->with('success', ["Personal Info", "$field updated successfully"]);
+        $this->profileService->updatePersonalInfo($request, $field);
+        return back();
     }
 }

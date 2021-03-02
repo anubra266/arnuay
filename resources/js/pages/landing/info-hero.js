@@ -7,9 +7,10 @@ import {
     Image,
 } from "@chakra-ui/react";
 import CInertiaLink from "@/app/chakra-inertia-link";
+import { LandingContext } from "./";
 
 const InfoHero = (props) => {
-    const bg = mode("gray.200", "gray.900");
+    const { bg } = React.useContext(LandingContext);
     return (
         <Box pos="relative" overflow="hidden" bg={bg} mt={10}>
             <Box maxW="7xl" mx="auto">

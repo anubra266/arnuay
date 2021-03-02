@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { usePage } from "@inertiajs/inertia-react";
-import { createStandaloneToast } from "@chakra-ui/react";
+import {
+    createStandaloneToast,
+    useColorModeValue as mode,
+} from "@chakra-ui/react";
 
 export const useFlashMessage = () => {
     const { flash } = usePage().props;
-    const toast = createStandaloneToast();
-
+    const chakratoast = createStandaloneToast();
     const display = ([title, body], status) => {
-        toast({
+        chakratoast({
             title: title,
             description: body,
             status: status,
-            duration: 5000,
+            duration: 3000,
             isClosable: true,
             position: "top-right",
         });

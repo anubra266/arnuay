@@ -7,6 +7,7 @@ import theme from "~/theme";
 import ErrorBoundary from "react-errbo";
 import Fonts from "~/theme/foundations/custom-fonts";
 import "../css/app.css";
+import Toasts from "./toaster";
 
 useProgressBar();
 
@@ -15,6 +16,7 @@ render(
     <ErrorBoundary>
         <ChakraProvider theme={theme}>
             <Fonts />
+            <Toasts />
             <App
                 initialPage={JSON.parse(el.dataset.page)}
                 resolveComponent={(name) =>

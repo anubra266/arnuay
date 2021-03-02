@@ -55,6 +55,7 @@ const AccountForm = ({ isOpen, onClose }) => {
             preserveScroll: true,
             onSuccess: () => {
                 form.resetFields();
+                onClose();
             },
         });
     };
