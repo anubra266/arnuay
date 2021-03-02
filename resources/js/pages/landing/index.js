@@ -8,7 +8,7 @@ const Landing = () => {
     const bg = mode("white", "gray.900");
     return (
         <LandingContext.Provider value={{ bg }}>
-            <Global styles={{ background: "white" }} />
+            <Global styles={{ body: { background: bg } }} />
             <Navbar />
             <InfoHero
                 image="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
