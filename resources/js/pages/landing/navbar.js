@@ -36,7 +36,7 @@ export default function Gslr() {
         <>
             <chakra.header
                 bg={bg}
-                px={{ base: 2, sm: 4 }}
+                pr={{ base: 2, sm: 4 }}
                 py={4}
                 ref={ref}
                 shadow={y > height ? "lg" : undefined}
@@ -52,8 +52,9 @@ export default function Gslr() {
                     alignItems="center"
                     justifyContent="space-between"
                     mx="auto"
+                    maxW="7xl"
                 >
-                    <Flex>
+                    <Box ml={{ base: 4, sm: 6, lg: 8 }}>
                         <CInertiaLink
                             href="/"
                             title="Arnuay Home Page"
@@ -63,10 +64,10 @@ export default function Gslr() {
                             <Logo h={50} />
                             <VisuallyHidden>Arnuay</VisuallyHidden>
                         </CInertiaLink>
-                    </Flex>
+                    </Box>
                     <HStack display="flex" alignItems="center" spacing={1}>
                         <HStack
-                            spacing={1}
+                            spacing={2}
                             mr={1}
                             color="brand.500"
                             display={{ base: "none", md: "inline-flex" }}
@@ -90,7 +91,7 @@ export default function Gslr() {
                                 Get Started
                             </CInertiaLink>
                         </HStack>
-                        <ThemeSwitch />
+                        <ThemeSwitch size="sm" />
                         <Box display={{ base: "inline-flex", md: "none" }}>
                             <IconButton
                                 display={{ base: "flex", md: "none" }}
