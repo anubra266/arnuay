@@ -56,5 +56,5 @@ const VerifyEmail = () => {
         </>
     );
 };
-VerifyEmail.layout = (page) => <Layout children={page} />;
+VerifyEmail.layout = [Layout];
 export default VerifyEmail;

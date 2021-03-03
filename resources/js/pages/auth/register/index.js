@@ -164,5 +164,5 @@ const Register = () => {
         </>
     );
 };
-Register.layout = (page) => <Layout children={page} />;
+Register.layout = [Layout];
 export default Register;
