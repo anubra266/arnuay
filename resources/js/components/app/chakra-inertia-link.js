@@ -3,12 +3,10 @@ import { Link } from "@inertiajs/inertia-react";
 import { Box } from "@chakra-ui/react";
 
 const CInertiaLink = (p) => {
-    const props = Object.keys(p)
-        .filter((prop) => !["href", "as", "method"].includes(prop))
-        .reduce((acc, nxt) => ((acc[nxt] = p[nxt]), acc), {});
+    const { href, as, method, ...rest } = p;
     return (
-        <Link href={p.href || "#"} method={p.method || "get"}>
-            <Box {...props} as={p.as} />
+        <Link href={href || "#"} method={method || "get"}>
+            <Box {...rest} as={as} />
         </Link>
     );
 };

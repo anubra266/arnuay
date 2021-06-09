@@ -1,12 +1,12 @@
 import { Flex, Image, Portal } from "@chakra-ui/react";
-import { Helmet } from "react-helmet";
+import { InertiaHead } from "@inertiajs/inertia-react";
 
 const Header = ({ portal }) => {
     return (
         <Portal containerRef={portal}>
-            <Helmet>
+            <InertiaHead>
                 <title>Security | Arnuay</title>
-            </Helmet>
+            </InertiaHead>
             <Flex>
                 <Image src="/img/headers/security.svg" h={250} />
             </Flex>

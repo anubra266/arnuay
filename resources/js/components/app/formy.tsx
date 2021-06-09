@@ -1,6 +1,5 @@
 import React, { ChangeEventHandler, useState } from "react";
-// import { useForm, InertiaFormProps } from "@inertiajs/inertia-react";
-import { useForm, InertiaFormProps } from "@anubra266/inertia-react";
+import { useForm, InertiaFormProps } from "@inertiajs/inertia-react";
 
 type FormProps = {
     initialValues: { [key: string]: any } | undefined;

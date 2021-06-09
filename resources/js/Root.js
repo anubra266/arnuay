@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { App } from "@inertiajs/inertia-react";
+import { AppcreateInertiaApp } from "@inertiajs/inertia-react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useProgressBar } from "@/app/progress-bar";
 import theme from "~/theme";
@@ -11,19 +11,18 @@ import Toasts from "./toaster";
 
 useProgressBar();
 
-const el = document.getElementById("app");
-render(
-    <ErrorBoundary>
-        <ChakraProvider theme={theme}>
-            <Fonts />
-            <Toasts />
-            <App
-                initialPage={JSON.parse(el.dataset.page)}
-                resolveComponent={(name) =>
-                    import(`~/pages/${name}`).then((module) => module.default)
-                }
-            />
-        </ChakraProvider>
-    </ErrorBoundary>,
-    el
-);
+createInertiaApp({
+    resolve: (name) => import(`~/pages/${name}`),
+    setup({ el, App, props }) {
+        render(
+            <ErrorBoundary>
+                <ChakraProvider theme={theme}>
+                    <Fonts />
+                    <Toasts />
+                    <App {...props} />
+                </ChakraProvider>
+            </ErrorBoundary>,
+            el
+        );
+    },
+});

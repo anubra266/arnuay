@@ -27,25 +27,23 @@ import { roundNum, toWords } from "~/Helpers/string";
 
 const NavLink = (props) => {
     const { bg } = useContext(LayoutContext);
-    const fDOMProps = Object.keys(props)
-        .filter((k) => !["active", "href"].includes(k))
-        .reduce((acc, nxt) => ((acc[nxt] = props[nxt]), acc), {});
+    const { active, href, ...rest } = props;
     const activeStyle = {
         color: mode(bg),
     };
     return (
         <CInertiaLink
             as={Button}
-            href={props.href}
-            variant={props.active ? "solid" : "ghost"}
+            href={href}
+            variant={active ? "solid" : "ghost"}
             w="full"
             size="sm"
             textTransform="capitalize"
-            pointerEvents={props.active && "none"}
-            {...(props.active && activeStyle)}
+            pointerEvents={active && "none"}
+            {...(active && activeStyle)}
             _hover={activeStyle}
             fontFamily="body"
-            {...fDOMProps}
+            {...rest}
         />
     );
 };

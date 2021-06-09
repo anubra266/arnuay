@@ -7,7 +7,7 @@ export function roundNum(x) {
 
     if (x < 1000000) {
         return Math.round(x / 1000) + "000";
-    }
+    } 
     if (x < 10000000) {
         return (x / 1000000).toFixed(2) + "000000";
     }
