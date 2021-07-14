@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { AppcreateInertiaApp } from "@inertiajs/inertia-react";
+import { createInertiaApp } from "@inertiajs/inertia-react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useProgressBar } from "@/app/progress-bar";
 import theme from "~/theme";

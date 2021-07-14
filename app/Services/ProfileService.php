@@ -13,6 +13,8 @@ class ProfileService
         return authUser()->settings()->getMultiple(
             [
                 "$this->infoKey.name",
+                "$this->infoKey.address",
+                "$this->infoKey.phone_number"
             ],
             'Unset'
         )['profile']['pinfo'];

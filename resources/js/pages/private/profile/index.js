@@ -22,11 +22,7 @@ const Profile = () => {
                     onClick={() => Inertia.get(route("profile.security"))}
                 />
                 <Menu
-                    title="Basic Info"
-                    icon={<MenuIcon as={RiProfileFill} />}
-                />
-                <Menu
-                    title="Personal Info"
+                    title="Account Info"
                     icon={<MenuIcon as={FaUserCircle} />}
                     onClick={() => Inertia.get(route("profile.pinfo"))}
                 />

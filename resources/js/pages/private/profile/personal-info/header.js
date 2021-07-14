@@ -5,7 +5,7 @@ const Header = ({ portal }) => {
     return (
         <Portal containerRef={portal}>
             <InertiaHead>
-                <title>Personal Info | Arnuay</title>
+                <title>Account Info | Arnuay</title>
             </InertiaHead>
             <Flex>
                 <Image src="/img/headers/pinfo.svg" h={250} />

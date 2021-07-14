@@ -3,6 +3,8 @@ import Layout from "~/pages/private/layout/main";
 import { Box, Flex, Text, useColorModeValue as mode } from "@chakra-ui/react";
 import Header from "./header";
 import Name from "./name";
+import Address from "./address";
+import PhoneNumber from "./phone-number";
 
 const header = createRef();
 
@@ -26,10 +28,12 @@ const PersonalInfo = (props) => {
                     color={mode("brand.700")}
                     textAlign="center"
                 >
-                    Personal Info
+                    Account Info
                 </Text>
                 <Flex justify="center" direction="column">
                     <Name {...props} />
+                    <Address {...props} />
+                    <PhoneNumber {...props} />
                 </Flex>
             </Box>
         </>

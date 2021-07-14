@@ -11,7 +11,7 @@ use Bavix\Wallet\Interfaces\Wallet;
 use Bavix\Wallet\Traits\HasWallet;
 use Bavix\Wallet\Traits\HasWallets;
 
-class User extends Authenticatable implements MustVerifyEmail, Wallet
+class User extends Authenticatable implements /* MustVerifyEmail, */ Wallet
 {
     use HasFactory, Notifiable, HasSettingsTable, HasWallet, HasWallets;
 
