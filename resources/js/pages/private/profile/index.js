@@ -17,14 +17,14 @@ const Profile = () => {
             <Header portal={header} />
             <Stack maxW="full">
                 <Menu
-                    title="Security"
-                    icon={<MenuIcon as={MdSecurity} />}
-                    onClick={() => Inertia.get(route("profile.security"))}
-                />
-                <Menu
                     title="Account Info"
                     icon={<MenuIcon as={FaUserCircle} />}
                     onClick={() => Inertia.get(route("profile.pinfo"))}
+                />
+                <Menu
+                    title="Security"
+                    icon={<MenuIcon as={MdSecurity} />}
+                    onClick={() => Inertia.get(route("profile.security"))}
                 />
                 <Menu
                     title="Sign Out"

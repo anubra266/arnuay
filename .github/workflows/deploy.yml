@@ -1,39 +1,39 @@
-name: Deploy
+# name: Deploy
 
-on: [push]
+# on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v1
+#     steps:
+#       - uses: actions/checkout@v1
 
-      - name: Copy repository contents via scp
-        uses: appleboy/scp-action@master
-        env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-        with:
-          source: "."
-          target: "/var/www/html/arnuay.anubra.tech"
+#       - name: Copy repository contents via scp
+#         uses: appleboy/scp-action@master
+#         env:
+#           HOST: ${{ secrets.HOST }}
+#           USERNAME: ${{ secrets.USERNAME }}
+#           PORT: ${{ secrets.PORT }}
+#           KEY: ${{ secrets.SSHKEY }}
+#         with:
+#           source: "."
+#           target: "/var/www/html/arnuay.anubra.tech"
 
-      - name: Executing remote command
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: cd /var/www/html/arnuay.anubra.tech && composer install && php artisan migrate && yarn && yarn prod && php artisan config:cache
+#       - name: Executing remote command
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           USERNAME: ${{ secrets.USERNAME }}
+#           PORT: ${{ secrets.PORT }}
+#           KEY: ${{ secrets.SSHKEY }}
+#           script: cd /var/www/html/arnuay.anubra.tech && composer install && php artisan migrate && yarn && yarn prod && php artisan config:cache
 
-      - name: Permission issues
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: cd /var/www/html/arnuay.anubra.tech && chmod 775 -R storage && chgrp www-data -R storage
+#       - name: Permission issues
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.HOST }}
+#           USERNAME: ${{ secrets.USERNAME }}
+#           PORT: ${{ secrets.PORT }}
+#           KEY: ${{ secrets.SSHKEY }}
+#           script: cd /var/www/html/arnuay.anubra.tech && chmod 775 -R storage && chgrp www-data -R storage
