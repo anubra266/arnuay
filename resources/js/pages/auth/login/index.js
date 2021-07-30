@@ -20,7 +20,7 @@ const Login = () => {
     const [show, setShow] = useState(false);
 
     const handleLogin = ({ post }) => {
-        post(route("login", { preserveScroll: true }));
+        post(route("login"), { preserveScroll: true });
     };
     return (
         <>

@@ -10,6 +10,7 @@ import {
 import NewAccount from "./new-account";
 import { parseAmount } from "~/Helpers/string";
 export const Account = (props) => {
+    const { name, title, description, ...rest } = props;
     return (
         <Box
             layerStyle="card"
@@ -20,16 +21,17 @@ export const Account = (props) => {
             cursor="pointer"
             w={320}
             maxW="98%"
+            {...rest}
         >
             <Stack spacing={4} direction="row">
-                <Avatar {...props} />
+                <Avatar name={name} title={title} />
                 <Stack spacing={1} my="auto">
                     <Text
                         fontWeight="bold"
                         color={mode("brand.600")}
                         textTransform="capitalize"
                     >
-                        {props.name || props.title}
+                        {name || title}
                     </Text>
                     <Text
                         fontWeight="normal"
@@ -37,7 +39,7 @@ export const Account = (props) => {
                         textTransform="capitalize"
                         fontSize="xs"
                     >
-                        {props.description}
+                        {description}
                     </Text>
                 </Stack>
             </Stack>

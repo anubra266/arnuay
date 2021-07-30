@@ -10,6 +10,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::name('accounts')->group(function () {
             Route::get('/', 'AccountController@index');
             Route::post('/create', 'AccountController@store')->name('.create');
+            Route::get('/send/{slug}', 'AccountController@sendInfo')->name('.send');
+            Route::post('/send/{wallet}', 'AccountController@send')->name('.send');
+            Route::get('/receive/{slug}', 'AccountController@receive')->name('.receive');
         });
     });
 

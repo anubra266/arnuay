@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
     Text,
     Icon,
@@ -17,8 +17,9 @@ import {
 } from "@chakra-ui/react";
 
 import { Account } from "../list";
-import { AccountsContext } from "../context";
+import { useAccountsContext } from "../context";
 import { parseAmount } from "~/Helpers/string";
+import { Inertia } from "@inertiajs/inertia";
 
 const Action = (props) => {
     const col = mode("brand.700");
@@ -44,7 +45,8 @@ const Action = (props) => {
         }
         return event;
     };
-    const { accounts } = useContext(AccountsContext);
+    const { accounts } = useAccountsContext();
+
     return (
         <>
             <VStack
@@ -97,6 +99,14 @@ const Action = (props) => {
                                                 description={`NGN ${parseAmount(
                                                     acc.balance
                                                 )}`}
+                                                onClick={() => {
+                                                    Inertia.get(
+                                                        route(
+                                                            `accounts.${props.action}`,
+                                                            { slug: acc.slug }
+                                                        )
+                                                    );
+                                                }}
                                             />
                                         ))}
                                         {accounts.length === 0 && (

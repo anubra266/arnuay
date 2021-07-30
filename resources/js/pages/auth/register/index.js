@@ -20,7 +20,7 @@ const Register = () => {
     const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
 
     const handleRegister = ({ post }) => {
-        post(route("register", { preserveScroll: true }));
+        post(route("register"), { preserveScroll: true });
     };
     return (
         <>

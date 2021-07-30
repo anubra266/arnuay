@@ -1,9 +1,6 @@
-import React, { createContext } from "react";
+import React from "react";
+import { createContext } from "@chakra-ui/react-utils";
 
-export const AccountsContext = createContext();
-
-const AccountsProvider = (props) => {
-    return <AccountsContext.Provider {...props} />;
-};
+export const [AccountsProvider, useAccountsContext] = createContext();
 
 export default AccountsProvider;
