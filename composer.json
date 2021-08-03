@@ -11,7 +11,6 @@
         "php": "^7.3|^8.0",
         "bavix/laravel-wallet": "^6.0",
         "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
         "glorand/laravel-model-settings": "^4.2",
         "guzzlehttp/guzzle": "^7.0.1",
         "hashids/hashids": "^4.1",

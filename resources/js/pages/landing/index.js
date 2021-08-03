@@ -11,7 +11,7 @@ const Landing = () => {
             <Global styles={{ body: { background: bg } }} />
             <Navbar />
             <InfoHero
-                image="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                image="https://image.freepik.com/free-photo/happy-african-american-businessman-suit-looking-laptop-excited-by-good-news-online-black-man-winner-sitting-office-desk-achieved-goal-raising-hands-celebrating-business-success-win-result_231208-673.jpg"
                 label=""
             />
         </LandingContext.Provider>

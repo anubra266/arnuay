@@ -2234,7 +2234,7 @@ available-typed-arrays@^1.0.2:
   dependencies:
     array-filter "^1.0.0"
 
-axios@^0.21, axios@^0.21.1:
+axios@^0.21, axios@^0.21.0, axios@^0.21.1:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
@@ -3966,6 +3966,13 @@ find-up@^4.0.0:
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
+
+flutterwave-react-v3@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/flutterwave-react-v3/-/flutterwave-react-v3-1.0.10.tgz#923210ba3456c18c2fae1fb53bb3155ec5863460"
+  integrity sha512-SRQWnAR9cWbDcEM1Xgisrow+Hs064oEy8yFd4pOUekMX+ygxEv6dScIttZd+o7GPcDR/Hq2MieRdknKDi52FrA==
+  dependencies:
+    axios "^0.21.0"
 
 focus-lock@^0.8.1:
   version "0.8.1"

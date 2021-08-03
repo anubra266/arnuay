@@ -8,20 +8,22 @@ import {
     FormErrorMessage,
     FormLabel,
     Input,
+    Select,
     Stack,
     Text,
     useColorModeValue as mode,
 } from "@chakra-ui/react";
 import Header from "./header";
 import Formy from "@/app/formy";
+import { banks } from "./banks";
 
 const header = createRef();
 
-const Receive = (props) => {
+const Withdraw = (props) => {
     const { wallet } = props;
 
-    const handleSend = ({ post }) => {
-        post(route("accounts.sendp", { wallet: wallet.id }), {
+    const handleWithdraw = ({ post }) => {
+        post(route("accounts.withdrawp", { wallet: wallet.id }), {
             preserveScroll: true,
         });
     };
@@ -44,52 +46,22 @@ const Receive = (props) => {
                     color={mode("brand.700")}
                     textAlign="center"
                 >
-                    Send from {wallet.name}
+                    Withdraw from {wallet.name}
                 </Text>
                 <Flex justify="center" direction="column" sx={{ gap: 8 }}>
                     <Formy
                         initialValues={{
-                            receiver: "",
-                            id: "",
                             amount: 0,
+                            account_number: "",
+                            account_bank: "",
                         }}
-                        onSubmit={handleSend}
+                        onSubmit={handleWithdraw}
                     >
-                        {({ receiver, id, amount }, { processing, errors }) => (
+                        {(
+                            { amount, account_bank, account_number },
+                            { processing, errors }
+                        ) => (
                             <Stack>
-                                <FormControl
-                                    isRequired
-                                    isInvalid={!!errors.receiver}
-                                >
-                                    <FormLabel fontSize="sm" fontWeight="bold">
-                                        Receiver Code
-                                    </FormLabel>
-                                    <Flex align="center" sx={{ gap: 4 }}>
-                                        <Input
-                                            type="text"
-                                            placeholder="Enter receiver's username"
-                                            focusBorderColor="brand.400"
-                                            autoFocus
-                                            size="sm"
-                                            roundedLeft="md"
-                                            {...receiver}
-                                        />
-                                        <Text>/</Text>
-                                        <Input
-                                            type="number"
-                                            placeholder="Enter number after slash"
-                                            focusBorderColor="brand.400"
-                                            size="sm"
-                                            roundedRight="md"
-                                            onFocus={(e) => e.target.select()}
-                                            {...id}
-                                        />
-                                    </Flex>
-                                    <FormErrorMessage>
-                                        {errors.receiver}
-                                    </FormErrorMessage>
-                                </FormControl>
-
                                 <FormControl
                                     isRequired
                                     isInvalid={!!errors.amount}
@@ -107,6 +79,49 @@ const Receive = (props) => {
                                     />
                                     <FormErrorMessage>
                                         {errors.amount}
+                                    </FormErrorMessage>
+                                </FormControl>
+                                <FormControl
+                                    isRequired
+                                    isInvalid={!!errors.account_number}
+                                >
+                                    <FormLabel fontSize="sm" fontWeight="bold">
+                                        Account Number
+                                    </FormLabel>
+                                    <Input
+                                        type="number"
+                                        placeholder="Enter Account Number"
+                                        focusBorderColor="brand.400"
+                                        size="sm"
+                                        rounded="md"
+                                        {...account_number}
+                                    />
+                                    <FormErrorMessage>
+                                        {errors.account_number}
+                                    </FormErrorMessage>
+                                </FormControl>
+                                <FormControl
+                                    isRequired
+                                    isInvalid={!!errors.account_bank}
+                                >
+                                    <FormLabel fontSize="sm" fontWeight="bold">
+                                        Bank Name
+                                    </FormLabel>
+                                    <Select
+                                        placeholder="Select Bank Name"
+                                        {...account_bank}
+                                    >
+                                        {banks.map((bank) => (
+                                            <option
+                                                value={bank.code}
+                                                key={bank.id}
+                                            >
+                                                {bank.name}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                    <FormErrorMessage>
+                                        {errors.account_bank}
                                     </FormErrorMessage>
                                 </FormControl>
 
@@ -127,5 +142,5 @@ const Receive = (props) => {
     );
 };
 
-Receive.layout = (page) => <Layout subpage ref={header} children={page} />;
-export default Receive;
+Withdraw.layout = (page) => <Layout subpage ref={header} children={page} />;
+export default Withdraw;

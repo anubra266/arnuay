@@ -40,6 +40,8 @@ class HandleInertiaRequests extends Middleware
             'flash' => fn () => $request->session()
                 ->only(['success', 'error', 'warning', 'info']),
             'user' => fn () =>  $request->user()?->only('id', 'username', 'email'),
+            'userSettings' => fn () => $request->user()->settings()->get('profile.pinfo'),
+            'public_key' => fn () => env('FLW_PUBLIC_KEY'),
             'netWorth' => fn () => $request->user()?->wallets()->get()->sum('balance'),
         ]);
     }

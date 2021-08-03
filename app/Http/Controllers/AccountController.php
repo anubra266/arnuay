@@ -15,6 +15,12 @@ class AccountController extends Controller
         $this->accountService = $accountService;
     }
 
+    public function home()
+    {
+        $transactions = authUser()->transactions()->with('wallet')->get();
+        return inertia('private/home', ['transactions' => $transactions]);
+    }
+
     public function index()
     {
         $accounts = $this->accountService->index();
@@ -44,8 +50,39 @@ class AccountController extends Controller
 
     public function send(AccountActionRequest $request, Wallet $wallet)
     {
-        dd($request->validated());
-        $wallet = $this->accountService->send($wallet, $request->validated());
-        // return inertia("private/accounts/acc-actions/receive", ['wallet' => $wallet]);
+        $newBalance = $this->accountService->send($wallet, $request->validated());
+        return back()->with('success', ['Send Funds', "Transfer was successful. Your balance is now N$newBalance"]);
+    }
+
+    public function deposit($slug)
+    {
+        $wallet = $this->accountService->receive($slug);
+        return inertia("private/accounts/acc-actions/deposit", ['wallet' => $wallet]);
+    }
+
+    public function depositProcess(Request $request, Wallet $wallet)
+    {
+        $status = $this->accountService->deposit($request, $wallet);
+        if ($status !== 'successful') {
+            return back()->with('error', ['Deposit Funds', "Unsuccessful. Something went wrong"]);
+        }
+        return redirect()->route('accounts.deposit', ['slug' => $wallet->slug])->with('success', ['Deposit Funds', "Successful. Your balance is now $wallet->balance"]);
+    }
+
+    public function withdraw($slug)
+    {
+        $wallet = $this->accountService->receive($slug);
+        return inertia("private/accounts/acc-actions/withdraw", ['wallet' => $wallet]);
+    }
+
+    public function withdrawProcess(Request $request, Wallet $wallet)
+    {
+        $data = $this->accountService->withdrawProcess($request, $wallet);
+        $amount = $data['data']['amount'];
+        $receiver = $data['data']['full_name'];
+        if ($data['status'] !== 'success') {
+            return back()->with('error', ['Withdraw Funds', "Unsuccessful. Something went wrong"]);
+        }
+        return back()->with('success', ['Send Funds', "$amount successfully sent to $receiver"]);
     }
 }

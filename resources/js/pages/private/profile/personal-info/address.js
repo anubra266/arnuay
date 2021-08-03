@@ -10,7 +10,6 @@ const Address = ({ info }) => {
         address: "",
     });
 
-    console.log(info);
     const handleSubmit = (value) => {
         if (info.address !== value) {
             const toastId = toast.loading(`Updating Address`);

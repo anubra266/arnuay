@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/home', fn () => inertia('private/home'))->name('home');
+    Route::get('/home', 'AccountController@home')->name('home');
 
 
     Route::group(['prefix' => 'accounts', 'middleware' => 'profile.setup'], function () {
@@ -11,8 +11,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('/', 'AccountController@index');
             Route::post('/create', 'AccountController@store')->name('.create');
             Route::get('/send/{slug}', 'AccountController@sendInfo')->name('.send');
-            Route::post('/send/{wallet}', 'AccountController@send')->name('.send');
+            Route::post('/send/{wallet}', 'AccountController@send')->name('.sendp');
             Route::get('/receive/{slug}', 'AccountController@receive')->name('.receive');
+            Route::get('/deposit/{slug}', 'AccountController@deposit')->name('.deposit');
+            Route::get('/deposit/paid/{wallet}', 'AccountController@depositProcess')->name('.depositp');
+            Route::get('/withdraw/{slug}', 'AccountController@withdraw')->name('.withdraw');
+            Route::post('/withdraw/pay/{wallet}', 'AccountController@withdrawProcess')->name('.withdrawp');
         });
     });
 
