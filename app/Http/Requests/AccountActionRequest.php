@@ -26,7 +26,11 @@ class AccountActionRequest extends FormRequest
     {
         $walletBalance = $this->wallet->balance;
         return [
-            'receiver' => 'required|exists:users,username',
+            'receiver' => ['required', 'exists:users,username', function ($attribute, $value, $fail) use ($walletBalance) {
+                if ($value === authUser()->username) {
+                    $fail('The ' . $attribute . ' should not be you.');
+                }
+            },],
             'id' => 'required',
             'amount' => ['required', 'numeric', function ($attribute, $value, $fail) use ($walletBalance) {
                 if ($value > $walletBalance) {

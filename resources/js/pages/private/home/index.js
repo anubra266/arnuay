@@ -9,13 +9,12 @@ import {
     StatArrow,
     StatGroup,
     VStack,
+    useColorModeValue,
 } from "@chakra-ui/react";
 import Header from "./header";
 const header = createRef();
 
 const Home = ({ transactions }) => {
-    console.log(transactions);
-
     return (
         <>
             <Header portal={header} />
@@ -37,7 +36,10 @@ const Home = ({ transactions }) => {
                             shadow="base"
                             w="full"
                             border="solid 1px"
-                            borderColor="gray.600"
+                            borderColor={useColorModeValue(
+                                "gray.300",
+                                "gray.600"
+                            )}
                             rounded="md"
                             p="4"
                             cursor="pointer"

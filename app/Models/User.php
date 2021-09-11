@@ -10,10 +10,12 @@ use Glorand\Model\Settings\Traits\HasSettingsTable;
 use Bavix\Wallet\Interfaces\Wallet;
 use Bavix\Wallet\Traits\HasWallet;
 use Bavix\Wallet\Traits\HasWallets;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+
 
 class User extends Authenticatable implements /* MustVerifyEmail, */ Wallet
 {
-    use HasFactory, Notifiable, HasSettingsTable, HasWallet, HasWallets;
+    use HasFactory, Notifiable, HasSettingsTable, HasWallet, HasWallets, TwoFactorAuthenticatable;
 
     /**
      * Send the email verification notification.

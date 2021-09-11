@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             $path = "private/profile";
             Route::get('/', fn () => inertia($path));
             Route::get('/security', fn () => inertia("$path/security"))->name('.security');
+            Route::get('/security/2fa', fn () => inertia("$path/security/2faset"))->name('.2fa');
             Route::get('/personal-info', 'ProfileController@personalInfo')->name('.pinfo');
             Route::post('/personal-info/{field}', 'ProfileController@updatePersonalInfo')->name('.pinfo.set');
         });

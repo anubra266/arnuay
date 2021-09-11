@@ -42,7 +42,9 @@ class AccountService
     public function send($sender, $receiver_info)
     {
         $receiver = User::whereUsername($receiver_info['receiver'])->first();
-        $receiving_wallet = $receiver->wallets($receiver_info['id'])->first();
+        $receiving_id = $receiver_info['id'];
+        $receiving_wallet = $receiver->wallets()->whereId($receiving_id)->first();
+        dd($receiver->wallets()->get());
         $sender->transfer($receiving_wallet, $receiver_info['amount']);
         return $sender->balance;
     }
