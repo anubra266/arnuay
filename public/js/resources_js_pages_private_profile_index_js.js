@@ -351,12 +351,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/layout/dist/esm/box.js");
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/layout/dist/esm/flex.js");
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/image/dist/esm/image.js");
-/* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/layout/dist/esm/stack.js");
-/* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/icon/dist/esm/icon.js");
-/* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/layout/dist/esm/text.js");
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../navbar */ "./resources/js/pages/private/layout/navbar.js");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context */ "./resources/js/pages/private/layout/context.js");
-/* harmony import */ var react_icons_ai__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-icons/ai */ "./node_modules/react-icons/ai/index.esm.js");
 /* harmony import */ var _app_flash_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/app/flash-message */ "./resources/js/components/app/flash-message.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -460,24 +456,7 @@ var Layout = function Layout(_ref, header) {
         fontSize: "md",
         fontWeight: "bold",
         mt: 5,
-        w: 520,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_9__.HStack, {
-          mr: "auto",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_10__.Icon, {
-            cursor: "pointer",
-            onClick: function onClick() {
-              return window.history.back();
-            },
-            as: react_icons_ai__WEBPACK_IMPORTED_MODULE_11__.AiOutlineArrowLeft
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_12__.Text, {
-            cursor: "pointer",
-            onClick: function onClick() {
-              return window.history.back();
-            },
-            textTransform: "uppercase",
-            children: "Back"
-          })]
-        })
+        w: 520
       })]
     })]
   });
@@ -675,7 +654,10 @@ function Navbar() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_app_chakra_inertia_link__WEBPACK_IMPORTED_MODULE_1__.default, {
               href: "/",
               letterSpacing: "widest",
-              fontSize: "3xl",
+              fontSize: {
+                base: "md",
+                lg: "3xl"
+              },
               _hover: {
                 color: "white"
               },
@@ -685,7 +667,11 @@ function Navbar() {
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_app_chakra_inertia_link__WEBPACK_IMPORTED_MODULE_1__.default, {
               href: route("accounts"),
-              fontSize: "md",
+              fontSize: {
+                base: "xs",
+                md: "sm"
+              },
+              fontFamily: "heading",
               opacity: 0.7,
               _hover: {
                 opacity: 1,
@@ -694,7 +680,7 @@ function Navbar() {
               transition: "opacity 0.1s ease-in-out",
               textTransform: "capitalize",
               title: "Networth",
-              children: [(0,_Helpers_string__WEBPACK_IMPORTED_MODULE_6__.toWords)((0,_Helpers_string__WEBPACK_IMPORTED_MODULE_6__.roundNum)(netWorth)) || "0.00", " naira"]
+              children: ["Networth:", " ", (0,_Helpers_string__WEBPACK_IMPORTED_MODULE_6__.toWords)((0,_Helpers_string__WEBPACK_IMPORTED_MODULE_6__.roundNum)(netWorth)) || "0.00", " naira"]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_14__.HStack, {

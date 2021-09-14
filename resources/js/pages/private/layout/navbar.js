@@ -153,7 +153,7 @@ export default function Navbar() {
                             <CInertiaLink
                                 href="/"
                                 letterSpacing="widest"
-                                fontSize="3xl"
+                                fontSize={{ base: "md", lg: "3xl" }}
                                 _hover={{ color: "white" }}
                                 title="Logo"
                             >
@@ -162,13 +162,15 @@ export default function Navbar() {
                             </CInertiaLink>
                             <CInertiaLink
                                 href={route("accounts")}
-                                fontSize="md"
+                                fontSize={{ base: "xs", md: "sm" }}
+                                fontFamily="heading"
                                 opacity={0.7}
                                 _hover={{ opacity: 1, color: "white" }}
                                 transition="opacity 0.1s ease-in-out"
                                 textTransform="capitalize"
                                 title="Networth"
                             >
+                                Networth:{" "}
                                 {toWords(roundNum(netWorth)) || "0.00"} naira
                             </CInertiaLink>
                         </HStack>

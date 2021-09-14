@@ -6,6 +6,7 @@ import {
     Flex,
     FormControl,
     FormErrorMessage,
+    FormHelperText,
     FormLabel,
     Input,
     Stack,
@@ -79,6 +80,7 @@ const Deposit = (props) => {
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
                             />
+                            <FormHelperText>A 2% fee is charged.</FormHelperText>
                         </FormControl>
 
                         <Button type="submit" colorScheme="brand" shadow="lg">

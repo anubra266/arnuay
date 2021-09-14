@@ -30,7 +30,7 @@ const Security = () => {
                 </Text>
                 <Flex justify="center" direction="column">
                     <TwoFactorAuth />
-                    <ResetPassword />
+                    {/* <ResetPassword /> */}
                 </Flex>
             </Box>
         </>

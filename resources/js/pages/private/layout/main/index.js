@@ -90,7 +90,7 @@ const Layout = ({ children, dhead, subpage }, header) => {
                         mt={5}
                         w={520}
                     >
-                        <HStack mr="auto">
+                        {/* <HStack mr="auto">
                             <Icon
                                 cursor="pointer"
                                 onClick={() => window.history.back()}
@@ -103,7 +103,7 @@ const Layout = ({ children, dhead, subpage }, header) => {
                             >
                                 Back
                             </Text>
-                        </HStack>
+                        </HStack> */}
                     </Box>
                 )}
             </Flex>

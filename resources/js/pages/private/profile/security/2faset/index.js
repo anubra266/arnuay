@@ -26,13 +26,15 @@ const Security = () => {
     const [recoveryCodes, setRecoveryCodes] = useState();
     const [qrCode, setQRCode] = useState();
 
-    const { processing, post, delete: destroy, errors, get } = useForm({});
+    const { processing, post, delete: destroy, errors } = useForm({});
 
     useEffect(() => {
-        axios.get("/user/two-factor-recovery-codes").then((response) => {
-            setRecoveryCodes(response.data);
-        });
-        showQrCode();
+        if (twoFaEnabled) {
+            axios.get("/user/two-factor-recovery-codes").then((response) => {
+                setRecoveryCodes(response.data);
+            });
+            showQrCode();
+        }
     }, [twoFaEnabled]);
 
     const showQrCode = () => {
@@ -86,6 +88,9 @@ const Security = () => {
                     <Divider />
                     {twoFaEnabled && (
                         <>
+                            <Text>
+                                Scan this code with your authenticator app
+                            </Text>
                             <span
                                 dangerouslySetInnerHTML={{ __html: qrCode }}
                             />
