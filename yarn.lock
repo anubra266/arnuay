@@ -1566,9 +1566,9 @@
     qs "^6.9.0"
 
 "@inertiajs/progress@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@inertiajs/progress/-/progress-0.2.4.tgz#1193c7d8e788dc6cab8bbc00383ed9ed8339df72"
-  integrity sha512-FVlxQjA3qxXoSljbhDWpXKdDth0IxovmI9lNJLbvxzpVir7iL5n9MCX7Sx9X+JcKdTKezCbGnc3CXQ92B38wbA==
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@inertiajs/progress/-/progress-0.2.7.tgz#b42ac849b6f227fe8a45a91d663719c5bd362131"
+  integrity sha512-zxadfLlBPIUvTE9g5k71V/Ayzo8P9kEp4hV4UKywCC2kURufxV7bycbZqU1GeMCFGDT+VRrjXNl676Pwwa1HoQ==
   dependencies:
     nprogress "^0.2.0"
 
@@ -5521,7 +5521,7 @@ npm-run-path@^4.0.1:
 nprogress@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
-  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+  integrity sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==
 
 nth-check@^1.0.2:
   version "1.0.2"
